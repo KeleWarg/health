@@ -19,6 +19,7 @@ import { Footer } from '@/components/homepage/Footer'
 import { StickyQuizTray } from '@/components/homepage/StickyQuizTray'
 import { ScrollReveal } from '@/components/ScrollReveal'
 import { PageTransition } from '@/components/PageTransition'
+import { VitalityCurve } from '@/components/homepage/VitalityCurve'
 
 const NAD_DATA = {
   id: 'nad',
@@ -35,7 +36,7 @@ const NAD_DATA = {
     'Free refills shipped on time, every month',
     '$0 due until your clinician approves',
   ],
-  checklistImage: '/vitalsrx.png',
+  checklistWidget: <VitalityCurve />,
   quizHref: 'https://peptides-fpe5.vercel.app/',
   learnHref: '/nad',
   legal: 'Prescriptions are issued only after an online consultation with an independent licensed provider. Compounded medications are dispensed by state-licensed pharmacies but are not FDA-approved.',
@@ -82,7 +83,7 @@ const BIOMARKER_DATA = {
   heroImage: '/Step - 5.png',
   heroImageAlt: 'Woman feeling energized outdoors',
   secondaryImage: '/adult walk.png',
-  checklistImage: '/vitalsrx.png',
+  checklistImage: '/chart card carousel60s.png',
   checklistButtonText: 'Get your BioIQ',
   checklistBackground: 'linear-gradient(135deg, #2c1810 0%, #4a2c1a 60%, #6b3d22 100%)',
 }

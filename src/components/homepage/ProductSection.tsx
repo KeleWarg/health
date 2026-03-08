@@ -15,6 +15,7 @@ interface ProductSectionProps {
   checklistTitle: string
   checklist: string[]
   checklistImage?: string
+  checklistWidget?: React.ReactNode
   quizHref: string
   learnHref: string
   legal: string
@@ -40,6 +41,7 @@ export function ProductSection({
   checklistTitle,
   checklist,
   checklistImage,
+  checklistWidget,
   quizHref,
   learnHref,
   legal,
@@ -54,7 +56,7 @@ export function ProductSection({
   checklistBackground,
   className,
 }: ProductSectionProps) {
-  const isDark = checklistDark || !!checklistImage || !!checklistBackground
+  const isDark = checklistDark || !!checklistImage || !!checklistWidget || !!checklistBackground
 
   return (
     <section
@@ -178,7 +180,7 @@ export function ProductSection({
                 : { backgroundColor: 'white' }
           }
         >
-          <div className={checklistImage ? "lg:max-w-[65%] relative z-10" : "relative z-10"}>
+          <div className={(checklistImage || checklistWidget) ? "lg:max-w-[65%] relative z-10" : "relative z-10"}>
             <h4 className={cn("font-semibold text-[18px] mb-5", isDark ? "text-white" : "text-neutral-900")}>
               {checklistTitle}
             </h4>
@@ -202,7 +204,7 @@ export function ProductSection({
               ))}
             </ul>
 
-            {(checklistImage || checklistDark) && (
+            {(checklistImage || checklistWidget || checklistDark) && (
               <div className="mt-8">
                 <Link
                   href={quizHref}
@@ -217,13 +219,16 @@ export function ProductSection({
             )}
           </div>
 
-          {checklistImage && (
-            <div className="mt-8 lg:mt-0 lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-[35%] h-[200px] lg:h-auto">
-               <img 
-                 src={checklistImage} 
-                 alt="" 
-                 className="w-full h-full object-cover" 
-               />
+          {(checklistImage || checklistWidget) && (
+            <div className="mt-8 lg:mt-0 lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-[35%] h-[240px] lg:h-auto flex items-center justify-center">
+              {checklistWidget ?? (
+                <img
+                  src={checklistImage}
+                  alt=""
+                  className="object-contain drop-shadow-xl"
+                  style={{ maxWidth: '60%', maxHeight: '60%', animation: 'float-gentle 4s ease-in-out infinite' }}
+                />
+              )}
             </div>
           )}
         </div>
