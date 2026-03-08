@@ -888,5 +888,29 @@
 }
 
 /* ============================================
+   WHY FORBES VITALS GRID BORDERS
+   ============================================ */
+@media (min-width: 640px) {
+  .wfv-cell {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    border-left: 0 !important;
+    border-bottom: 0 !important;
+  }
+  .grid.sm\:grid-cols-3 > .wfv-cell:nth-child(3n+2),
+  .grid.sm\:grid-cols-3 > .wfv-cell:nth-child(3n+3) {
+    padding-left: 24px !important;
+    padding-right: 24px !important;
+    border-left: 1px solid rgba(26,26,46,0.12) !important;
+  }
+  .grid.sm\:grid-cols-3 > .wfv-cell:nth-child(3n+1) {
+    padding-right: 24px !important;
+  }
+  .grid.sm\:grid-cols-3 > .wfv-cell:nth-child(-n+3) {
+    border-bottom: 1px solid rgba(26,26,46,0.12) !important;
+  }
+}
+
+/* ============================================
    TYPEFORM SCREEN TRANSITIONS
    ============================================ */

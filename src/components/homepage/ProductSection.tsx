@@ -27,6 +27,7 @@ interface ProductSectionProps {
   checklistDark?: boolean
   checklistButtonText?: string
   checklistBackground?: string
+  className?: string
 }
 
 export function ProductSection({
@@ -50,21 +51,22 @@ export function ProductSection({
   checklistDark,
   checklistButtonText = "Get personalized treatment",
   checklistBackground,
+  className,
 }: ProductSectionProps) {
   const isDark = checklistDark || !!checklistImage || !!checklistBackground
 
   return (
     <section
       id={id}
-      className={cn('py-16 sm:py-24', reversed ? 'bg-surface-cream' : 'bg-surface')}
+      className={cn('py-16 sm:py-24', reversed ? 'bg-surface-cream' : 'bg-surface', className)}
     >
-      <div className="max-w-[1280px] mx-auto">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <div className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-12 mb-10">
           <div className="lg:w-[33%] flex-shrink-0">
             <p className="text-primary text-[13px] font-medium uppercase tracking-[0.1em] mb-3">
               {eyebrow}
             </p>
-            <h2 className="text-neutral-900 text-headline-md sm:text-display lg:text-display-md mb-4">
+            <h2 className="text-neutral-900 text-headline-md sm:text-display lg:text-display-md font-medium mb-4">
               {h2}
               <em className="not-italic text-primary">{h2Accent}</em>
             </h2>

@@ -68,7 +68,7 @@ export function ExpertCare() {
 
           {/* Checklist */}
           <div>
-            <h2 className="text-neutral-900 text-headline-lg mb-8">
+            <h2 className="text-neutral-900 text-headline-md sm:text-display lg:text-display-md font-medium mb-8">
               Expert care, built in from <em className="not-italic text-primary">day one.</em>
             </h2>
             <div className="space-y-0 divide-y divide-border">

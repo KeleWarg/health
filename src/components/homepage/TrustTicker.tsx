@@ -18,7 +18,7 @@ export function TrustTicker() {
   const items = [...TICKER_ITEMS, ...TICKER_ITEMS]
 
   return (
-    <div>
+    <div className="relative z-10">
       {/* Stat-bar marquee */}
       <div className="py-[22px] overflow-hidden border-y border-border">
         <div

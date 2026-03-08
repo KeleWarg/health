@@ -35,7 +35,7 @@ export function Nav({ onGetStarted }: NavProps) {
           : 'bg-transparent',
       )}
     >
-      <div className="max-w-[1280px] mx-auto flex items-center justify-between h-16">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
         <Link href="/" className="flex items-center shrink-0">
           <Image
             src="/Forbes%20Health.png"

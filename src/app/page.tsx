@@ -7,9 +7,10 @@ import { NavCards } from '@/components/homepage/NavCards'
 import { TrustTicker } from '@/components/homepage/TrustTicker'
 import { ProductSection } from '@/components/homepage/ProductSection'
 import { BmiCalculator } from '@/components/homepage/BmiCalculator'
-import { ExpertCare } from '@/components/homepage/ExpertCare'
-import { QualificationCards } from '@/components/homepage/QualificationCards'
+import { OutcomeStats } from '@/components/homepage/OutcomeStats'
+// QualificationCards now embedded inside OutcomeStats
 import { ExpertTeam } from '@/components/homepage/ExpertTeam'
+import { PeptideJourney } from '@/components/homepage/PeptideJourney'
 import { ClinicalTrust } from '@/components/homepage/ClinicalTrust'
 import { CmoTrust } from '@/components/homepage/CmoTrust'
 import { WhyForbesVitals } from '@/components/homepage/WhyForbesVitals'
@@ -96,12 +97,13 @@ export default function HomePage() {
       <ProductSection {...NAD_DATA} />
       <ProductSection {...BIOMARKER_DATA} reversed />
       <BmiCalculator />
-      <ExpertCare />
-      <QualificationCards />
+      <OutcomeStats />
       <ExpertTeam />
-      <ClinicalTrust />
-      <CmoTrust />
+      <PeptideJourney />
+      {/* <ClinicalTrust /> */}
+      {/* <CmoTrust /> */}
       <WhyForbesVitals />
+      <TrustTicker />
       <Faq />
       <Footer />
       <StickyQuizTray open={trayOpen} onToggle={() => setTrayOpen((o) => !o)} />

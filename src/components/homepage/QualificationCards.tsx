@@ -28,7 +28,7 @@ const CARDS = [
 export function QualificationCards() {
   return (
     <section className="bg-surface py-16 sm:py-24">
-      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 space-y-4">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
         {CARDS.map((card) => (
           <div
             key={card.eyebrow}
@@ -43,7 +43,7 @@ export function QualificationCards() {
             </div>
 
             <p className="text-white/50 text-[13px] uppercase tracking-[0.1em] mb-3">{card.eyebrow}</p>
-            <h2 className="text-white text-headline-sm sm:text-headline-md mb-3 max-w-[480px]">{card.h2}</h2>
+            <h2 className="text-white text-headline-sm sm:text-headline-md font-medium mb-3 max-w-[480px]">{card.h2}</h2>
             <p className="text-white/60 text-[15px] leading-relaxed mb-8 max-w-[520px]">{card.sub}</p>
 
             <div className="flex flex-col sm:flex-row items-start gap-3">

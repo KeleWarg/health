@@ -210,8 +210,8 @@ export function Hero() {
         </p>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 translate-y-1/2 z-20 px-4 sm:px-6">
-        <div className="max-w-[840px] mx-auto grid grid-cols-2 gap-4">
+      <div className="absolute bottom-0 left-0 right-0 translate-y-[75%] sm:translate-y-1/2 z-20 px-4 sm:px-6">
+        <div className="max-w-[840px] mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4">
           {NAV_CARDS.map((card, i) => (
             <Link
               key={card.label}
