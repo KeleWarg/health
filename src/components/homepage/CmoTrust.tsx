@@ -9,7 +9,7 @@ export function CmoTrust() {
         <div className="rounded-2xl border border-border bg-white p-8 sm:p-10">
           <div className="grid grid-cols-1 sm:grid-cols-[1fr,auto] gap-8 items-start">
             <div>
-              <h2 className="text-neutral-900 text-headline-sm sm:text-headline-md mb-3">
+              <h2 className="text-neutral-900 text-headline-sm sm:text-headline-md font-medium mb-3">
                 Products you can trust. <em className="not-italic text-primary">Science you can verify.</em>
               </h2>
               <p className="text-neutral-500 text-[15px] leading-relaxed mb-6">

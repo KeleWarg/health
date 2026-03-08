@@ -132,6 +132,7 @@ const config: Config = {
         'word-fade-out': 'wordFadeOut 0.3s ease-in forwards',
         'tray-up': 'trayUp 0.35s cubic-bezier(0.34,1.56,0.64,1) forwards',
         'bmi-bar': 'bmiBar 0.8s ease-out forwards',
+        'float': 'float 5s ease-in-out infinite',
       },
       keyframes: {
         slideUp: {
@@ -169,6 +170,10 @@ const config: Config = {
         bmiBar: {
           '0%': { width: '0%' },
           '100%': { width: 'var(--bmi-pct)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0)' },
+          '50%': { transform: 'translateY(-8px)' },
         },
       },
     },

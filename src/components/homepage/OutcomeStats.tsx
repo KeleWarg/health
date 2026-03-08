@@ -72,7 +72,7 @@ export function OutcomeStats() {
           <img
             src="/AdobeStock_507785886 3.png"
             alt=""
-            className="absolute top-0 right-0 h-[55%] w-auto object-contain pointer-events-none z-[1] hidden lg:block"
+            className="absolute top-0 right-0 h-[90%] w-auto object-contain pointer-events-none z-[1] hidden lg:block animate-float"
             style={{ filter: 'drop-shadow(-20px 0 40px rgba(0,0,0,0.4))' }}
           />
 
@@ -93,12 +93,27 @@ export function OutcomeStats() {
             }}
           />
 
+          {/* Mobile hero image — in-flow, above stats */}
+          <div className="relative z-[3] -mt-16 -mx-6 mb-4 lg:hidden">
+            <img
+              src="/AdobeStock_507785886 3.png"
+              alt=""
+              className="w-full h-auto object-cover max-h-[240px] object-[center_15%] animate-float"
+            />
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                background: 'linear-gradient(to top, rgba(13,61,58,1) 0%, rgba(13,61,58,0) 40%)',
+              }}
+            />
+          </div>
+
           <div className="relative z-[5] px-4 sm:px-8">
         {/* Header */}
         <div className="mb-16">
           <p className="text-white/50 text-[13px] font-medium uppercase tracking-[0.1em] mb-3">Proven Outcomes</p>
           <h2
-            className="font-display font-bold text-white mb-4"
+            className="font-display font-medium text-white mb-4"
             style={{ fontSize: 'clamp(28px, 4.5vw, 44px)' }}
           >
             Real results.<br />Measured, not&nbsp;promised.

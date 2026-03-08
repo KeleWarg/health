@@ -6,7 +6,7 @@ export function ClinicalTrust() {
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
           <div>
-            <h2 className="text-neutral-900 text-headline-lg mb-3">
+            <h2 className="text-neutral-900 text-headline-lg font-medium mb-3">
               Clinician-reviewed. <em className="not-italic text-primary">Forbes-backed.</em>
             </h2>
             <p className="text-neutral-500 text-body leading-relaxed mb-6">

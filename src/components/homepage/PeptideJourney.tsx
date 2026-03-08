@@ -76,7 +76,7 @@ export function PeptideJourney() {
               NAD+ Vitality Index
             </p>
 
-            <h2 className="text-headline-md sm:text-display lg:text-display-md text-neutral-900 mb-3">
+            <h2 className="text-headline-md sm:text-display lg:text-display-md text-neutral-900 font-medium mb-3">
               Discover your{' '}
               <span className="text-primary">Vitality Index</span>
             </h2>
