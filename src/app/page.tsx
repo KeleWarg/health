@@ -32,6 +32,7 @@ const NAD_DATA = {
     'Free refills shipped on time, every month',
     '$0 due until your clinician approves',
   ],
+  checklistImage: '/vitalsrx.png',
   quizHref: '/peptides',
   learnHref: '/nad',
   legal: 'Prescriptions are issued only after an online consultation with an independent licensed provider. Compounded medications are dispensed by state-licensed pharmacies but are not FDA-approved.',
@@ -41,9 +42,13 @@ const NAD_DATA = {
     { goalLabel: 'Goal', goalValue: 'Faster recovery', markerName: 'CRP', markerLabel: 'Recovery Marker', bullets: ['Reduce soreness', 'Bounce back faster'], gradientFrom: '#d9e8d4', gradientTo: '#9fc4a8' },
     { goalLabel: 'Goal', goalValue: 'Mental clarity', markerName: 'BDNF', markerLabel: 'Brain Health', bullets: ['Sharper focus', 'Reduced brain fog'], gradientFrom: '#e8dfd4', gradientTo: '#c4b09f' },
   ],
-  heroImage: '/readyrx.png',
-  heroImageAlt: 'Woman holding ReadyRX NAD+ vial',
-  secondaryVideo: 'https://pub-2f75537729e74145a7fc2b8d6fcc519e.r2.dev/AdobeStock_245344941_Video_4K_Preview.mp4',
+  heroImage: '/vitalsrx.png',
+  heroImageAlt: 'Woman holding VitalsRX NAD+ vial',
+  collageVideos: [
+    'https://pub-2f75537729e74145a7fc2b8d6fcc519e.r2.dev/AdobeStock_440017363_Video_4K_Preview.mp4',
+    'https://pub-2f75537729e74145a7fc2b8d6fcc519e.r2.dev/AdobeStock_196522896_Video_4K_Preview.mp4',
+    'https://pub-2f75537729e74145a7fc2b8d6fcc519e.r2.dev/AdobeStock_245344941_Video_4K_Preview.mp4',
+  ],
 }
 
 const BIOMARKER_DATA = {
@@ -74,6 +79,9 @@ const BIOMARKER_DATA = {
   heroImage: '/Step - 5.png',
   heroImageAlt: 'Woman feeling energized outdoors',
   secondaryImage: '/adult walk.png',
+  checklistImage: '/vitalsrx.png',
+  checklistButtonText: 'Get your BioIQ',
+  checklistBackground: 'linear-gradient(135deg, #2c1810 0%, #4a2c1a 60%, #6b3d22 100%)',
 }
 
 export default function HomePage() {

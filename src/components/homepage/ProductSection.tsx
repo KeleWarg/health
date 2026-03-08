@@ -13,6 +13,7 @@ interface ProductSectionProps {
   body: string
   checklistTitle: string
   checklist: string[]
+  checklistImage?: string
   quizHref: string
   learnHref: string
   legal: string
@@ -22,6 +23,10 @@ interface ProductSectionProps {
   heroImageAlt?: string
   secondaryImage?: string
   secondaryVideo?: string
+  collageVideos?: string[]
+  checklistDark?: boolean
+  checklistButtonText?: string
+  checklistBackground?: string
 }
 
 export function ProductSection({
@@ -32,6 +37,7 @@ export function ProductSection({
   body,
   checklistTitle,
   checklist,
+  checklistImage,
   quizHref,
   learnHref,
   legal,
@@ -40,7 +46,13 @@ export function ProductSection({
   heroImageAlt,
   secondaryImage,
   secondaryVideo,
+  collageVideos,
+  checklistDark,
+  checklistButtonText = "Get personalized treatment",
+  checklistBackground,
 }: ProductSectionProps) {
+  const isDark = checklistDark || !!checklistImage || !!checklistBackground
+
   return (
     <section
       id={id}
@@ -71,9 +83,12 @@ export function ProductSection({
               </Link>
               <Link
                 href={learnHref}
-                className="text-primary text-[15px] font-medium py-3 px-1 hover:underline"
+                className="text-primary text-[15px] font-medium py-3 px-1 underline underline-offset-4 inline-flex items-center gap-1.5 hover:opacity-80 transition-opacity"
               >
                 Learn more
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </Link>
             </div>
           </div>
@@ -86,7 +101,43 @@ export function ProductSection({
                 className="w-[48%] aspect-[3/4] object-cover rounded-2xl mt-16"
                 style={{ animation: 'float-gentle 4s ease-in-out infinite' }}
               />
-              {secondaryVideo ? (
+              {collageVideos && collageVideos.length > 0 ? (
+                <div
+                  className="w-[48%] aspect-[3/4] flex flex-col gap-3"
+                  style={{ animation: 'float-gentle 4s ease-in-out 1.5s infinite' }}
+                >
+                  <video
+                    src={collageVideos[0]}
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    className="w-full flex-1 min-h-0 object-cover rounded-2xl"
+                  />
+                  <div className="flex gap-3 flex-1 min-h-0">
+                    {collageVideos[1] && (
+                      <video
+                        src={collageVideos[1]}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="flex-1 min-w-0 h-full object-cover rounded-2xl"
+                      />
+                    )}
+                    {collageVideos[2] && (
+                      <video
+                        src={collageVideos[2]}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="flex-1 min-w-0 h-full object-cover rounded-2xl"
+                      />
+                    )}
+                  </div>
+                </div>
+              ) : secondaryVideo ? (
                 <video
                   src={secondaryVideo}
                   autoPlay
@@ -109,19 +160,67 @@ export function ProductSection({
         </div>
 
         {/* Checklist */}
-        <div className="rounded-xl border border-border bg-white p-6 sm:p-8 mt-14 mb-6">
-          <h4 className="text-neutral-900 font-semibold text-[15px] mb-5">{checklistTitle}</h4>
-          <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-3.5">
-            {checklist.map((item) => (
-              <li key={item} className="flex items-start gap-3">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="flex-shrink-0 mt-0.5">
-                  <circle cx="10" cy="10" r="9" fill="#2A6B5A" fillOpacity="0.08" />
-                  <path d="M6.5 10l2.5 2.5 5-5" stroke="#2A6B5A" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span className="text-neutral-800 text-[15px] leading-snug">{item}</span>
-              </li>
-            ))}
-          </ul>
+        <div 
+          className={cn(
+            "relative rounded-xl p-6 sm:p-8 mt-14 mb-6 overflow-hidden",
+            isDark ? "" : "border border-border"
+          )}
+          style={
+            checklistBackground 
+              ? { background: checklistBackground }
+              : isDark 
+                ? { background: 'linear-gradient(135deg, #1a5c4e 0%, #0d3d3a 100%)' } 
+                : { backgroundColor: 'white' }
+          }
+        >
+          <div className={checklistImage ? "lg:max-w-[65%] relative z-10" : "relative z-10"}>
+            <h4 className={cn("font-semibold text-[18px] mb-5", isDark ? "text-white" : "text-neutral-900")}>
+              {checklistTitle}
+            </h4>
+            
+            <ul className={cn(
+              "grid gap-x-4 gap-y-2 items-start content-start",
+              checklistImage 
+                ? "grid-cols-1 sm:grid-cols-2" 
+                : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+            )}>
+              {checklist.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" className="flex-shrink-0 mt-0.5">
+                    <circle cx="10" cy="10" r="9" fill={isDark ? "white" : "#2A6B5A"} fillOpacity={isDark ? "0.15" : "0.08"} />
+                    <path d="M6.5 10l2.5 2.5 5-5" stroke={isDark ? "white" : "#2A6B5A"} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                  <span className={cn("text-[15px] leading-snug", isDark ? "text-white/90" : "text-neutral-800")}>
+                    {item}
+                  </span>
+                </li>
+              ))}
+            </ul>
+
+            {(checklistImage || checklistDark) && (
+              <div className="mt-8">
+                <Link
+                  href={quizHref}
+                  className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-white text-primary font-medium hover:bg-neutral-100 transition-colors"
+                >
+                  {checklistButtonText}
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </Link>
+              </div>
+            )}
+          </div>
+
+          {checklistImage && (
+            <div className="mt-8 lg:mt-0 lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-[35%] h-[200px] lg:h-auto">
+               <img 
+                 src={checklistImage} 
+                 alt="" 
+                 className="w-full h-full object-cover" 
+               />
+            </div>
+          )}
         </div>
 
         {/* Legal */}

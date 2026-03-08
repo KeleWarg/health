@@ -78,7 +78,7 @@ const config: Config = {
       },
       fontFamily: {
         sans: ['General Sans', 'system-ui', '-apple-system', 'sans-serif'],
-        display: ['var(--font-display)', 'Georgia', 'Times New Roman', 'serif'],
+        display: ['General Sans', 'system-ui', '-apple-system', 'sans-serif'],
       },
       fontSize: {
         'display': ['32px', { lineHeight: '40px', letterSpacing: '-0.02em', fontWeight: '600' }],
