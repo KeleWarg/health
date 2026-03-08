@@ -21,7 +21,7 @@ const NAV_CARDS = [
   {
     label: 'NAD+ Therapy',
     hook: 'Restore your energy at the cellular level.',
-    quizHref: '/peptides',
+    quizHref: 'https://peptides-fpe5.vercel.app/',
     learnHref: '/nad',
     image: '/NAD+.png',
     bg: 'linear-gradient(135deg, #1a5c4e 0%, #0d3d3a 100%)',
@@ -32,7 +32,7 @@ const NAV_CARDS = [
   {
     label: 'Biomarker Testing',
     hook: '87 markers. The test your physical never runs.',
-    quizHref: '/biomarkers',
+    quizHref: 'https://biomarker-topaz.vercel.app/biomarkers',
     learnHref: '/biomarkers-info',
     image: '/step5-nobg.png',
     bg: 'linear-gradient(135deg, #2c1810 0%, #4a2c1a 60%, #6b3d22 100%)',
@@ -186,7 +186,7 @@ export function Hero() {
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 animate-fade-in-up stagger-4">
           <Link
-            href="/peptides"
+            href="https://peptides-fpe5.vercel.app/"
             className="inline-flex items-center justify-center gap-2 bg-white text-neutral-900 font-medium text-[15px] px-7 py-3.5 rounded-lg hover:bg-white/90 transition-colors w-full sm:w-auto"
           >
             Discover Your Vitality Index
@@ -195,7 +195,7 @@ export function Hero() {
             </svg>
           </Link>
           <Link
-            href="/biomarkers"
+            href="https://biomarker-topaz.vercel.app/biomarkers"
             className="inline-flex items-center justify-center gap-2 text-white font-medium text-[15px] px-7 py-3.5 rounded-lg border border-white/25 hover:bg-white/[0.08] transition-colors w-full sm:w-auto"
           >
             Discover Your BioIQ

@@ -1,6 +1,8 @@
 'use client'
 
 import * as React from 'react'
+import { ScrollReveal } from '@/components/ScrollReveal'
+import { Parallax } from '@/components/Parallax'
 
 const stats = [
   { value: 92, suffix: '%', label: 'Feel measurably better within 90 days' },
@@ -69,12 +71,14 @@ export function OutcomeStats() {
           }}
         >
           {/* Hero image — foreground, right-aligned */}
-          <img
-            src="/AdobeStock_507785886 3.png"
-            alt=""
-            className="absolute top-0 right-0 h-[90%] w-auto object-contain pointer-events-none z-[1] hidden lg:block animate-float"
-            style={{ filter: 'drop-shadow(-20px 0 40px rgba(0,0,0,0.4))' }}
-          />
+          <Parallax speed={-0.04} className="absolute top-0 right-0 h-[90%] w-auto z-[1] hidden lg:block">
+            <img
+              src="/AdobeStock_507785886 3.png"
+              alt=""
+              className="h-full w-auto object-contain pointer-events-none animate-float"
+              style={{ filter: 'drop-shadow(-20px 0 40px rgba(0,0,0,0.4))' }}
+            />
+          </Parallax>
 
           {/* Gradient fade on the left edge of the image so text stays readable */}
           <div
@@ -138,8 +142,9 @@ export function OutcomeStats() {
 
           <div className="flex w-full justify-between gap-4">
             {stats.map((stat, i) => (
-              <div
+              <ScrollReveal
                 key={stat.label}
+                delay={i * 120}
                 className={`flex flex-col items-center flex-1 ${STAGGER_MT[i]}`}
               >
                 <div className="w-[200px] p-5">
@@ -154,7 +159,7 @@ export function OutcomeStats() {
 
                 {/* Dot */}
                 <div className="w-2 h-2 rounded-full bg-white/50 shrink-0 translate-y-[3px]" />
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

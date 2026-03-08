@@ -3,6 +3,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import { Parallax } from '@/components/Parallax'
 
 interface ProductSectionProps {
   id: string
@@ -97,12 +98,14 @@ export function ProductSection({
 
           {heroImage && (
             <div className="hidden lg:flex items-start gap-5 flex-1 min-w-0">
-              <img
-                src={heroImage}
-                alt={heroImageAlt ?? ''}
-                className="w-[48%] aspect-[3/4] object-cover rounded-2xl mt-16"
-                style={{ animation: 'float-gentle 4s ease-in-out infinite' }}
-              />
+              <Parallax speed={0.05} className="w-[48%]">
+                <img
+                  src={heroImage}
+                  alt={heroImageAlt ?? ''}
+                  className="w-full aspect-[3/4] object-cover rounded-2xl mt-16"
+                  style={{ animation: 'float-gentle 4s ease-in-out infinite' }}
+                />
+              </Parallax>
               {collageVideos && collageVideos.length > 0 ? (
                 <div
                   className="w-[48%] aspect-[3/4] flex flex-col gap-3"

@@ -17,6 +17,8 @@ import { WhyForbesVitals } from '@/components/homepage/WhyForbesVitals'
 import { Faq } from '@/components/homepage/Faq'
 import { Footer } from '@/components/homepage/Footer'
 import { StickyQuizTray } from '@/components/homepage/StickyQuizTray'
+import { ScrollReveal } from '@/components/ScrollReveal'
+import { PageTransition } from '@/components/PageTransition'
 
 const NAD_DATA = {
   id: 'nad',
@@ -34,7 +36,7 @@ const NAD_DATA = {
     '$0 due until your clinician approves',
   ],
   checklistImage: '/vitalsrx.png',
-  quizHref: '/peptides',
+  quizHref: 'https://peptides-fpe5.vercel.app/',
   learnHref: '/nad',
   legal: 'Prescriptions are issued only after an online consultation with an independent licensed provider. Compounded medications are dispensed by state-licensed pharmacies but are not FDA-approved.',
   carousel: [
@@ -67,7 +69,7 @@ const BIOMARKER_DATA = {
     'Clinician-reviewed results with actionable next steps',
     'HSA/FSA eligible — $1.09/day for 87 markers',
   ],
-  quizHref: '/biomarkers',
+  quizHref: 'https://biomarker-topaz.vercel.app/biomarkers',
   learnHref: '/biomarkers-info',
   legal: 'Biomarker testing provided by CLIA-certified laboratories. Results reviewed by board-certified clinicians.',
   carousel: [
@@ -89,24 +91,26 @@ export default function HomePage() {
   const [trayOpen, setTrayOpen] = React.useState(false)
 
   return (
-    <div className="min-h-screen">
-      <Nav onGetStarted={() => setTrayOpen(true)} />
-      <Hero />
-      <NavCards />
-      <TrustTicker />
-      <ProductSection {...NAD_DATA} />
-      <ProductSection {...BIOMARKER_DATA} reversed />
-      <BmiCalculator />
-      <OutcomeStats />
-      <ExpertTeam />
-      <PeptideJourney />
-      {/* <ClinicalTrust /> */}
-      {/* <CmoTrust /> */}
-      <WhyForbesVitals />
-      <TrustTicker />
-      <Faq />
-      <Footer />
-      <StickyQuizTray open={trayOpen} onToggle={() => setTrayOpen((o) => !o)} />
-    </div>
+    <PageTransition>
+      <div className="min-h-screen">
+        <Nav onGetStarted={() => setTrayOpen(true)} />
+        <Hero />
+        <ScrollReveal><NavCards /></ScrollReveal>
+        <ScrollReveal><TrustTicker /></ScrollReveal>
+        <ScrollReveal><ProductSection {...NAD_DATA} /></ScrollReveal>
+        <ScrollReveal><ProductSection {...BIOMARKER_DATA} reversed /></ScrollReveal>
+        <ScrollReveal><BmiCalculator /></ScrollReveal>
+        <ScrollReveal><OutcomeStats /></ScrollReveal>
+        <ScrollReveal><ExpertTeam /></ScrollReveal>
+        <ScrollReveal><PeptideJourney /></ScrollReveal>
+        {/* <ClinicalTrust /> */}
+        {/* <CmoTrust /> */}
+        <ScrollReveal><WhyForbesVitals /></ScrollReveal>
+        <ScrollReveal><TrustTicker /></ScrollReveal>
+        <ScrollReveal><Faq /></ScrollReveal>
+        <ScrollReveal><Footer /></ScrollReveal>
+        <StickyQuizTray open={trayOpen} onToggle={() => setTrayOpen((o) => !o)} />
+      </div>
+    </PageTransition>
   )
 }

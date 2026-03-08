@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import Link from 'next/link'
+import { ScrollReveal } from '@/components/ScrollReveal'
 
 const ICONS: Record<string, React.ReactNode> = {
   'Biomarker Testing': (
@@ -113,7 +114,7 @@ export function WhyForbesVitals() {
             return (
               <div
                 key={cell.badge}
-                className="py-7 flex flex-col wfv-cell"
+                className="wfv-cell"
                 style={{
                   borderBottom: rowIn2 < lastRowMobile ? border : undefined,
                   borderLeft: colIn2 === 1 ? border : undefined,
@@ -121,6 +122,8 @@ export function WhyForbesVitals() {
                   paddingRight: colIn2 === 0 ? 20 : undefined,
                 }}
               >
+              <ScrollReveal delay={i * 80}>
+              <div className="py-7 flex flex-col h-full">
                 <div className="flex-1">
                   <div className="text-primary mb-3">
                     {ICONS[cell.badge]}
@@ -143,18 +146,22 @@ export function WhyForbesVitals() {
                   ))}
                 </div>
               </div>
+              </ScrollReveal>
+              </div>
             )
           })}
 
 
           {/* CTA cell — index 5: col2=1, row2=2, col3=2, row3=1 */}
           <div
-            className="py-7 flex flex-col wfv-cell"
+            className="wfv-cell"
             style={{
               borderLeft: '1px solid rgba(26,26,46,0.12)',
               paddingLeft: 20,
             }}
           >
+          <ScrollReveal delay={CELLS.length * 80}>
+          <div className="py-7 flex flex-col">
             <div className="flex-1">
               <div className="text-primary mb-3">
                 <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
@@ -168,12 +175,14 @@ export function WhyForbesVitals() {
             </div>
             <div className="mt-4">
               <Link
-                href="/vitality"
+                href="https://peptides-fpe5.vercel.app/"
                 className="inline-flex items-center justify-center gap-2 text-primary text-[14px] font-medium px-5 py-2.5 rounded-full border border-primary/30 hover:bg-primary/[0.04] transition-colors"
               >
                 See what&apos;s in your protocol
               </Link>
             </div>
+          </div>
+          </ScrollReveal>
           </div>
         </div>
       </div>

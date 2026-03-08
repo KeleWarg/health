@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import Image from 'next/image'
+import { ScrollReveal } from '@/components/ScrollReveal'
 
 const DOCTORS = [
   { name: 'Dr Anant Vinjamoori', title: 'Superpower Chief Longevity Officer, Harvard MD & MBA', image: '/AdobeStock_608751415.jpeg' },
@@ -26,8 +27,9 @@ export function ExpertTeam() {
 
         {/* Doctor cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
-          {DOCTORS.map((doc) => (
-            <div key={doc.name} className="group">
+          {DOCTORS.map((doc, i) => (
+            <ScrollReveal key={doc.name} delay={i * 100}>
+            <div className="group">
               <div className="relative aspect-[4/5] rounded-2xl overflow-hidden bg-surface-cream">
                 <Image
                   src={doc.image}
@@ -44,6 +46,7 @@ export function ExpertTeam() {
                 </div>
               </div>
             </div>
+            </ScrollReveal>
           ))}
         </div>
       </div>

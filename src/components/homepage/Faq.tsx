@@ -3,6 +3,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { cn } from '@/lib/utils'
+import { ScrollReveal } from '@/components/ScrollReveal'
 
 const FAQS = [
   { q: 'What is NAD+ therapy?', a: '' },
@@ -23,7 +24,7 @@ const NAV_CARDS = [
     hook: 'Restore your energy at the cellular level.',
     line2: 'Clinician-prescribed. Personalized to your biology. $0 due until approved.',
     line3: 'From $199/mo · Free delivery · Cancel anytime',
-    href: '/peptides',
+    href: 'https://peptides-fpe5.vercel.app/',
     image: '/NAD+.png',
     bg: 'linear-gradient(135deg, #1a5c4e 0%, #0d3d3a 100%)',
     bgHover: 'linear-gradient(135deg, #238068 0%, #145c50 100%)',
@@ -35,7 +36,7 @@ const NAV_CARDS = [
     hook: '87 markers. The test your physical never runs.',
     line2: 'Metabolic, hormonal, cardiovascular, thyroid, and inflammatory — one draw, full picture.',
     line3: '$399/yr · HSA/FSA eligible · Results in days',
-    href: '/biomarkers',
+    href: 'https://biomarker-topaz.vercel.app/biomarkers',
     image: '/step5-nobg.png',
     bg: 'linear-gradient(135deg, #2c1810 0%, #4a2c1a 60%, #6b3d22 100%)',
     bgHover: 'linear-gradient(135deg, #4a2c1a 0%, #6b3d22 50%, #8a5230 100%)',
@@ -57,7 +58,8 @@ export function Faq() {
 
         <div className="divide-y divide-border">
           {FAQS.map((faq, i) => (
-            <div key={faq.q}>
+            <ScrollReveal key={faq.q} delay={i * 60}>
+            <div>
               <button
                 type="button"
                 onClick={() => setOpenIdx(openIdx === i ? null : i)}
@@ -88,6 +90,7 @@ export function Faq() {
                 </p>
               </div>
             </div>
+            </ScrollReveal>
           ))}
         </div>
 
@@ -96,8 +99,8 @@ export function Faq() {
       {/* Nav cards — full width */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-0 mt-12">
         {NAV_CARDS.map((card, i) => (
+          <ScrollReveal key={card.label} delay={i * 120} direction={i === 0 ? 'left' : 'right'}>
           <Link
-            key={card.label}
             href={card.href}
             className="group relative transition-all duration-300 block"
             style={{ background: card.bg }}
@@ -135,6 +138,7 @@ export function Faq() {
               </div>
             </div>
           </Link>
+          </ScrollReveal>
         ))}
       </div>
     </section>

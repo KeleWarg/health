@@ -315,7 +315,7 @@ export function BmiCalculator() {
                     }
                   </p>
                   <Link
-                    href={`/peptides?bmi=${bmi.toFixed(1)}`}
+                    href={`https://peptides-fpe5.vercel.app/?bmi=${bmi.toFixed(1)}`}
                     className="inline-flex items-center justify-center gap-2 bg-primary text-white font-medium text-[15px] px-6 py-3 rounded-lg hover:bg-primary-light transition-colors"
                   >
                     {cat.cta}

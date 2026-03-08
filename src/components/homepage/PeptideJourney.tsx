@@ -1,8 +1,8 @@
 'use client'
 
 import * as React from 'react'
-import { useRouter } from 'next/navigation'
 import { cn } from '@/lib/utils'
+import { usePageTransition } from '@/components/PageTransition'
 
 const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 
@@ -21,20 +21,12 @@ const CDN = 'https://pub-2f75537729e74145a7fc2b8d6fcc519e.r2.dev'
 const VIDEO_SRC = `${CDN}/AdobeStock_301343733.mov`
 
 export function PeptideJourney() {
-  const router = useRouter()
+  const navigate = usePageTransition()
   const [selected, setSelected] = React.useState('')
-  const timerRef = React.useRef<ReturnType<typeof setTimeout> | null>(null)
-
-  React.useEffect(() => {
-    return () => { if (timerRef.current) clearTimeout(timerRef.current) }
-  }, [])
 
   const handleSelect = (value: string) => {
-    if (timerRef.current) clearTimeout(timerRef.current)
     setSelected(value)
-    timerRef.current = setTimeout(() => {
-      router.push(`/peptides?goal=${value}`)
-    }, 500)
+    navigate(`https://peptides-fpe5.vercel.app/?goal=${value}`)
   }
 
   return (
@@ -45,7 +37,7 @@ export function PeptideJourney() {
         alt=""
         className="absolute pointer-events-none z-10 hidden lg:block"
         style={{
-          right: '-40px',
+          right: '-80px',
           top: '50%',
           transform: 'translateY(-50%) rotate(10deg)',
           height: '55%',
