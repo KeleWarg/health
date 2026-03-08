@@ -170,6 +170,7 @@ export function ProductSection({
         <div 
           className={cn(
             "relative rounded-xl p-6 sm:p-8 mt-14 mb-6 overflow-hidden",
+            (checklistImage || checklistWidget) ? "flex flex-col-reverse lg:block" : "",
             isDark ? "" : "border border-border"
           )}
           style={
@@ -180,6 +181,19 @@ export function ProductSection({
                 : { backgroundColor: 'white' }
           }
         >
+          {(checklistImage || checklistWidget) && (
+            <div className="mb-6 lg:mb-0 lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-[35%] h-[240px] lg:h-auto flex items-center justify-center">
+              {checklistWidget ?? (
+                <img
+                  src={checklistImage}
+                  alt=""
+                  className="object-contain drop-shadow-xl"
+                  style={{ maxWidth: '60%', maxHeight: '60%', animation: 'float-gentle 4s ease-in-out infinite' }}
+                />
+              )}
+            </div>
+          )}
+
           <div className={(checklistImage || checklistWidget) ? "lg:max-w-[65%] relative z-10" : "relative z-10"}>
             <h4 className={cn("font-semibold text-[18px] mb-5", isDark ? "text-white" : "text-neutral-900")}>
               {checklistTitle}
@@ -187,7 +201,7 @@ export function ProductSection({
             
             <ul className={cn(
               "grid gap-x-4 gap-y-2 items-start content-start",
-              checklistImage 
+              (checklistImage || checklistWidget)
                 ? "grid-cols-1 sm:grid-cols-2" 
                 : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
             )}>
@@ -218,19 +232,6 @@ export function ProductSection({
               </div>
             )}
           </div>
-
-          {(checklistImage || checklistWidget) && (
-            <div className="mt-8 lg:mt-0 lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-[35%] h-[240px] lg:h-auto flex items-center justify-center">
-              {checklistWidget ?? (
-                <img
-                  src={checklistImage}
-                  alt=""
-                  className="object-contain drop-shadow-xl"
-                  style={{ maxWidth: '60%', maxHeight: '60%', animation: 'float-gentle 4s ease-in-out infinite' }}
-                />
-              )}
-            </div>
-          )}
         </div>
 
         {/* Legal */}

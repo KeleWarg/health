@@ -158,7 +158,7 @@ export function Hero() {
 
       <div className="relative z-10 max-w-[800px] mx-auto px-4 sm:px-6 text-center pt-44 pb-28">
         <p className="text-white/60 text-[13px] tracking-[0.12em] uppercase mb-5 animate-fade-in-up stagger-1">
-          Forbes Health · Clinician-Led Programs
+          Clinician-Prescribed · Delivered to Your Door
         </p>
 
         <h1 className="font-display text-white text-[clamp(3rem,6.5vw,4.5rem)] font-medium leading-[1.08] tracking-[-0.02em] mb-5 min-h-[2.16em] animate-fade-in-up stagger-2">
@@ -206,7 +206,7 @@ export function Hero() {
         </div>
 
         <p className="text-white/40 text-sm mb-12 animate-fade-in-up stagger-5">
-          Trusted by 12,000+ patients · Backed by Forbes Health
+          87 biomarkers · Board-certified clinicians · $0 to start
         </p>
       </div>
 

@@ -13,27 +13,43 @@ export function VitalityCurve() {
   const [phase, setPhase] = React.useState(0)
   const gradientId = React.useId().replace(/:/g, '')
 
+  const visibleRef = React.useRef(false)
+
   React.useEffect(() => {
     const el = ref.current
     if (!el) return
 
+    function runCycle() {
+      setPhase(0)
+      const timers = [
+        setTimeout(() => setPhase(1), 100),
+        setTimeout(() => setPhase(2), 400),
+        setTimeout(() => setPhase(3), 800),
+        setTimeout(() => setPhase(4), 1200),
+      ]
+      return timers
+    }
+
+    let timers: ReturnType<typeof setTimeout>[] = []
+    let loop: ReturnType<typeof setInterval>
+
     const obs = new IntersectionObserver(
       ([e]) => {
-        if (e.isIntersecting) {
-          obs.disconnect()
-          const timers = [
-            setTimeout(() => setPhase(1), 100),
-            setTimeout(() => setPhase(2), 400),
-            setTimeout(() => setPhase(3), 800),
-            setTimeout(() => setPhase(4), 1200),
-          ]
-          return () => timers.forEach(clearTimeout)
+        if (e.isIntersecting && !visibleRef.current) {
+          visibleRef.current = true
+          timers = runCycle()
+          loop = setInterval(() => { timers = runCycle() }, 6000)
         }
       },
       { threshold: 0.3 },
     )
     obs.observe(el)
-    return () => obs.disconnect()
+
+    return () => {
+      obs.disconnect()
+      timers.forEach(clearTimeout)
+      clearInterval(loop)
+    }
   }, [])
 
   const W = 420
