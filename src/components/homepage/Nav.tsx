@@ -17,21 +17,50 @@ interface NavProps {
 
 export function Nav({ onGetStarted }: NavProps) {
   const [scrolled, setScrolled] = React.useState(false)
+  const [overDark, setOverDark] = React.useState(true)
+  const [overFooter, setOverFooter] = React.useState(false)
 
   React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    onScroll()
-    return () => window.removeEventListener('scroll', onScroll)
+    function check() {
+      setScrolled(window.scrollY > 20)
+
+      const navBottom = 64
+      const x = window.innerWidth / 2
+      const y = navBottom / 2
+
+      const els = document.elementsFromPoint(x, y)
+      const dark = els.some(
+        (el) => el.closest('[data-nav-dark]') !== null
+      )
+      const footer = els.some(
+        (el) => el.closest('footer') !== null
+      )
+      setOverDark(dark)
+      setOverFooter(footer)
+    }
+
+    window.addEventListener('scroll', check, { passive: true })
+    window.addEventListener('resize', check, { passive: true })
+    check()
+    return () => {
+      window.removeEventListener('scroll', check)
+      window.removeEventListener('resize', check)
+    }
   }, [])
+
+  const showDark = scrolled && !overDark
 
   return (
     <nav
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled
-          ? 'bg-white/80 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.06)]'
-          : 'bg-transparent',
+        overFooter
+          ? '-translate-y-full opacity-0'
+          : showDark
+            ? 'bg-white/80 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.06)]'
+            : scrolled
+              ? 'bg-black/20 backdrop-blur-xl shadow-[0_1px_0_rgba(255,255,255,0.06)]'
+              : 'bg-transparent',
       )}
     >
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
@@ -41,7 +70,7 @@ export function Nav({ onGetStarted }: NavProps) {
             alt="Forbes Health"
             className={cn(
               'h-6 w-auto absolute left-0 transition-opacity duration-300',
-              scrolled ? 'opacity-0' : 'opacity-100',
+              showDark ? 'opacity-0' : 'opacity-100',
             )}
           />
           <img
@@ -49,7 +78,7 @@ export function Nav({ onGetStarted }: NavProps) {
             alt="Forbes Health"
             className={cn(
               'h-6 w-auto transition-opacity duration-300',
-              scrolled ? 'opacity-100' : 'opacity-0',
+              showDark ? 'opacity-100' : 'opacity-0',
             )}
           />
         </Link>
@@ -60,7 +89,7 @@ export function Nav({ onGetStarted }: NavProps) {
           onClick={onGetStarted}
           className={cn(
             'text-[13px] font-medium px-5 py-2 rounded-lg transition-all duration-300',
-            scrolled
+            showDark
               ? 'bg-primary text-white hover:bg-primary-light'
               : 'bg-white text-neutral-900 hover:bg-white/90',
           )}

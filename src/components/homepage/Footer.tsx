@@ -42,7 +42,7 @@ const FOOTER_LINKS = [
 
 export function Footer() {
   return (
-    <footer className="relative pt-14 pb-8" style={{ background: 'linear-gradient(135deg, #1a5c4e 0%, #0d3d3a 100%)' }}>
+    <footer data-nav-dark className="relative pt-14 pb-8" style={{ background: 'linear-gradient(135deg, #1a5c4e 0%, #0d3d3a 100%)' }}>
       <div className="absolute inset-0 bg-gradient-to-b from-black/65 via-black/50 to-black/70" />
       <div className="relative z-10 max-w-[1280px] mx-auto px-4 sm:px-6">
         {/* Logo */}

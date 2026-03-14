@@ -147,6 +147,7 @@ export function Hero() {
     <>
     <section
       id="hero"
+      data-nav-dark
       className="relative overflow-hidden"
       style={{ background: 'linear-gradient(135deg, #1a5c4e 0%, #0d3d3a 100%)' }}
     >

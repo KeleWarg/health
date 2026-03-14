@@ -238,6 +238,7 @@ export function ProductSection({
   return (
     <section
       id={id}
+      {...(sectionDark ? { 'data-nav-dark': '' } : {})}
       className={cn('py-16 sm:py-24 relative', sectionDark ? 'overflow-hidden' : (reversed ? 'bg-surface-cream' : 'bg-surface'), flushBottom && '!pb-0', className)}
       style={sectionDark ? { background: sectionBackground || 'linear-gradient(135deg, #1a5c4e 0%, #0d3d3a 100%)' } : undefined}
     >
