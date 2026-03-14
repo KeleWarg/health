@@ -97,7 +97,6 @@ export default function HomePage() {
         <Nav onGetStarted={() => setTrayOpen(true)} />
         <Hero />
         <ScrollReveal><NavCards /></ScrollReveal>
-        <ScrollReveal><TrustTicker /></ScrollReveal>
         <ScrollReveal><ProductSection {...NAD_DATA} /></ScrollReveal>
         <ScrollReveal><ProductSection {...BIOMARKER_DATA} reversed /></ScrollReveal>
         <ScrollReveal><BmiCalculator /></ScrollReveal>

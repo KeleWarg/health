@@ -76,22 +76,6 @@ export function Nav({ onGetStarted }: NavProps) {
           </svg>
         </Link>
 
-        <div className="hidden lg:flex items-center gap-1">
-          {NAV_LINKS.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className={cn(
-                'text-[13px] px-4 py-2 rounded-full transition-colors duration-300 whitespace-nowrap',
-                scrolled
-                  ? 'text-neutral-500 hover:text-neutral-800 hover:bg-black/[0.04]'
-                  : 'text-white/70 hover:text-white hover:bg-white/[0.08]',
-              )}
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
 
         <button
           type="button"
