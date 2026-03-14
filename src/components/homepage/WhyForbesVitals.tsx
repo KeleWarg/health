@@ -85,12 +85,35 @@ const CELLS = [
 ]
 
 export function WhyForbesVitals() {
+  const lineRef = React.useRef<HTMLDivElement>(null)
+
+  React.useEffect(() => {
+    const el = lineRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.classList.add('animate-line-grow')
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.2 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <section className="py-16 sm:py-24">
+    <section className="py-16 sm:py-24 relative">
+      <div
+        ref={lineRef}
+        className="absolute left-1/2 -translate-x-1/2 w-[1.5px] bg-primary/40 origin-top scale-y-0"
+        style={{ top: '-60px', height: '120px', transition: 'transform 1s cubic-bezier(0.22, 1, 0.36, 1)' }}
+      />
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <div className="lg:w-[75%] mx-auto text-center mb-10">
           <p className="text-primary text-[13px] font-medium uppercase tracking-[0.1em] mb-3">The Difference</p>
-          <h2 className="text-dark text-headline-md sm:text-display lg:text-display-md font-medium mb-4">
+          <h2 className="text-dark text-headline-md sm:text-display lg:text-display-md font-semibold sm:font-medium mb-4">
             Why people choose<br />Forbes Health.
           </h2>
           <p className="text-muted text-body leading-relaxed max-w-[640px] mx-auto">

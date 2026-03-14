@@ -26,8 +26,8 @@ export function Faq() {
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <div className="lg:w-[75%] mx-auto text-center mb-10">
           <p className="text-primary text-[13px] font-medium uppercase tracking-[0.1em] mb-3">Common Questions</p>
-          <h2 className="text-neutral-900 text-headline-md sm:text-display lg:text-display-md font-medium">
-            Everything you want to know<br /><em className="not-italic text-primary">before you start.</em>
+          <h2 className="text-neutral-900 text-headline-md sm:text-display lg:text-display-md font-semibold sm:font-medium">
+            Everything you want to know {' '}<em className="not-italic text-primary">before you start.</em>
           </h2>
         </div>
 

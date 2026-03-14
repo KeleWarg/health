@@ -17,8 +17,8 @@ export function ExpertTeam() {
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
         <div className="lg:w-[75%] mx-auto text-center mb-10">
           <p className="text-primary text-[13px] font-medium uppercase tracking-[0.1em] mb-3">Advisory Board</p>
-          <h2 className="text-neutral-900 text-headline-md sm:text-display lg:text-display-md font-medium mb-4">
-            The standard of care starts with <em className="not-italic text-primary">the people who set it.</em>
+          <h2 className="text-neutral-900 text-headline-md sm:text-display lg:text-display-md font-semibold sm:font-medium mb-4">
+            Backed by the world&apos;s top <em className="not-italic text-primary">healthcare professionals.</em>
           </h2>
           <p className="text-neutral-500 text-body leading-relaxed">
             Forbes Health treatments are developed and reviewed by a medical advisory board of board-certified physicians and researchers who have spent careers at the intersection of longevity, performance, and clinical medicine.
@@ -38,12 +38,10 @@ export function ExpertTeam() {
                   className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                   sizes="(max-width: 768px) 50vw, 25vw"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent px-4 pb-4 pt-16">
-                  <div className="h-[52px]">
-                    <p className="text-white font-semibold text-[15px] leading-snug">{doc.name}</p>
-                    <p className="text-white/60 text-[13px] leading-snug mt-0.5 line-clamp-2">{doc.title}</p>
-                  </div>
-                </div>
+              </div>
+              <div className="mt-3 px-1">
+                <p className="text-neutral-900 font-semibold text-[15px] leading-snug">{doc.name}</p>
+                <p className="text-neutral-500 text-[13px] leading-snug mt-0.5">{doc.title}</p>
               </div>
             </div>
             </ScrollReveal>

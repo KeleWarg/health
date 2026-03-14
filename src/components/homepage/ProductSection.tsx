@@ -27,6 +27,8 @@ interface ProductSectionProps {
   heroImageAlt?: string
   heroImageClassName?: string
   heroObjectPosition?: string
+  heroOffset?: string
+  heroFullWidth?: boolean
   secondaryImage?: string
   secondaryVideo?: string
   collageVideos?: string[]
@@ -35,6 +37,8 @@ interface ProductSectionProps {
   checklistButtonText?: string
   checklistBackground?: string
   sectionDark?: boolean
+  sectionBackground?: string
+  accentColor?: string
   blendTop?: string
   blendBottom?: string
   flushBottom?: boolean
@@ -61,6 +65,8 @@ export function ProductSection({
   heroImageAlt,
   heroImageClassName,
   heroObjectPosition,
+  heroOffset,
+  heroFullWidth,
   secondaryImage,
   secondaryVideo,
   collageVideos,
@@ -69,6 +75,8 @@ export function ProductSection({
   checklistButtonText = "Get personalized treatment",
   checklistBackground,
   sectionDark,
+  sectionBackground,
+  accentColor,
   blendTop,
   blendBottom,
   flushBottom,
@@ -83,11 +91,11 @@ export function ProductSection({
         {eyebrow}
       </p>
       <h2
-        className="text-headline-md sm:text-display lg:text-display-md font-medium mb-4"
+        className="text-headline-md sm:text-display lg:text-display-md font-semibold sm:font-medium mb-4"
         style={{ color: sectionDark ? '#ffffff' : '#1A1A2E' }}
       >
         {h2}
-        <em className={cn("not-italic", sectionDark ? "text-primary-light" : "text-primary")}>{h2Accent}</em>
+        <em className={cn("not-italic", !accentColor && (sectionDark ? "text-primary-light" : "text-primary"))} style={accentColor ? { color: accentColor } : undefined}>{h2Accent}</em>
       </h2>
       <p className={cn("text-[1rem] leading-relaxed mb-6", sectionDark ? "text-white/70" : "text-neutral-500")}>
         {body}
@@ -98,9 +106,11 @@ export function ProductSection({
           className="btn-primary btn-continue inline-flex items-center justify-center gap-2 w-full sm:w-auto"
         >
           {quizText}
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-          </svg>
+          {quizText !== 'Coming Soon...' && (
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+              <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          )}
         </Link>
         {learnHref && (
           <Link
@@ -130,13 +140,23 @@ export function ProductSection({
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] lg:w-[190%] max-w-none object-contain drop-shadow-lg"
         />
       </div>
+    ) : heroFullWidth ? (
+      <div className="relative" style={{ top: heroOffset || '16px' }}>
+        <img
+          src={heroImage}
+          alt={heroImageAlt ?? ''}
+          loading="lazy"
+          className="w-[150%] max-w-none object-contain"
+          style={{ animation: 'float-gentle 4s ease-in-out infinite', marginLeft: 'calc(-25% + 100px)' }}
+        />
+      </div>
     ) : (
       <img
         src={heroImage}
         alt={heroImageAlt ?? ''}
         loading="lazy"
         className="w-full aspect-[3/4] object-cover rounded-xl lg:rounded-2xl lg:mt-16"
-        style={{ animation: 'float-gentle 4s ease-in-out infinite', objectPosition: heroObjectPosition }}
+        style={{ animation: 'float-gentle 4s ease-in-out infinite', objectPosition: heroObjectPosition, marginTop: heroOffset }}
       />
     )
   ) : null
@@ -206,7 +226,7 @@ export function ProductSection({
     <section
       id={id}
       className={cn('py-16 sm:py-24 relative', sectionDark ? 'overflow-hidden' : (reversed ? 'bg-surface-cream' : 'bg-surface'), flushBottom && '!pb-0', className)}
-      style={sectionDark ? { background: 'linear-gradient(135deg, #1a5c4e 0%, #0d3d3a 100%)' } : undefined}
+      style={sectionDark ? { background: sectionBackground || 'linear-gradient(135deg, #1a5c4e 0%, #0d3d3a 100%)' } : undefined}
     >
       {sectionDark && (
         <div className="absolute inset-0 z-[1] bg-gradient-to-b from-black/65 via-black/50 to-black/70" />
@@ -263,7 +283,7 @@ export function ProductSection({
           </div>
         ) : (
           <>
-            <div className={cn("flex flex-col lg:flex-row gap-8 lg:gap-12", flushBottom ? 'mb-0' : 'mb-10', sectionDark && !flushBottom ? "lg:items-center" : "lg:items-start")}>
+            <div className={cn("flex flex-col lg:flex-row gap-8 lg:gap-12", flushBottom ? 'mb-0' : 'mb-10', heroFullWidth ? "lg:items-center" : sectionDark && !flushBottom ? "lg:items-center" : "lg:items-start")}>
               <div className="lg:w-[33%] flex-shrink-0">
                 {textBlock}
                 {(heroBlock || collageElements) && (
@@ -276,14 +296,22 @@ export function ProductSection({
                 )}
               </div>
               {heroImage && (
-                <div className={cn("hidden lg:flex items-start gap-5 flex-1 min-w-0", flushBottom && "self-end items-end")}>
-                  <Parallax speed={0.05} className="w-[48%] relative z-10">
-                    {heroBlock}
-                  </Parallax>
-                  {collageElements && (
-                    <div className={cn("w-[48%] flex flex-col gap-5", flushBottom && "justify-end")}>
-                      {collageElements}
-                    </div>
+                <div className={cn("hidden lg:flex items-start gap-5 flex-1 min-w-0", (flushBottom || heroFullWidth) && "self-end items-end")}>
+                  {heroFullWidth ? (
+                    <Parallax speed={0.05} className="w-full relative z-10">
+                      {heroBlock}
+                    </Parallax>
+                  ) : (
+                    <>
+                      <Parallax speed={0.05} className="w-[48%] relative z-10">
+                        {heroBlock}
+                      </Parallax>
+                      {collageElements && (
+                        <div className={cn("w-[48%] flex flex-col gap-5", flushBottom && "justify-end")}>
+                          {collageElements}
+                        </div>
+                      )}
+                    </>
                   )}
                 </div>
               )}

@@ -41,8 +41,8 @@ const FEATURED_CARDS = [
 ]
 
 const COMPACT_CARDS = [
-  { label: 'ED Medication', href: '#', bg: '#E8EBF0', hoverBg: 'linear-gradient(135deg, #2c1810 0%, #4a2c1a 60%, #6b3d22 100%)', image: '/ed-pill.png', glowColor: 'rgba(218, 175, 85, 0.55)' },
-  { label: 'More Testosterone', href: '#', bg: '#F2EBE8', hoverBg: 'linear-gradient(135deg, #1a2019 0%, #2e3528 60%, #434d38 100%)', image: '/trt-generated-new.png', glowColor: 'rgba(218, 175, 85, 0.55)' },
+  { label: 'ED Medication', hook: 'Confidence when it counts.', href: '#', bg: '#E8EBF0', hoverBg: 'linear-gradient(135deg, #2c1810 0%, #4a2c1a 60%, #6b3d22 100%)', image: '/ed-pill.png', glowColor: 'rgba(218, 175, 85, 0.55)' },
+  { label: 'More Testosterone', hook: 'Reclaim your energy & drive.', href: '#', bg: '#F2EBE8', hoverBg: 'linear-gradient(135deg, #1a2019 0%, #2e3528 60%, #434d38 100%)', image: '/trt-generated-new.png', glowColor: 'rgba(218, 175, 85, 0.55)' },
 ]
 
 const SENTENCES = [
@@ -279,8 +279,11 @@ export function Hero() {
                   className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
                   style={{ background: card.hoverBg }}
                 />
-                <div className="relative z-10 flex items-center justify-between h-[72px] px-5">
-                  <p className="font-semibold text-[15px] text-neutral-800 transition-colors duration-300 group-hover:text-white">{card.label}</p>
+                <div className="relative z-10 flex items-center justify-between h-[140px] sm:h-[72px] px-5">
+                  <div>
+                    <p className="font-semibold text-[15px] text-neutral-800 transition-colors duration-300 group-hover:text-white">{card.label}</p>
+                    <p className="text-[14px] leading-snug mt-1 text-[#6b6158] sm:hidden">{card.hook}</p>
+                  </div>
                   <div className="flex items-center gap-3">
                     {/* @ts-ignore */}
                     {card.image && (

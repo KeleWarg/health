@@ -405,6 +405,10 @@
   }
 }
 
+.animate-line-grow {
+  transform: scaleY(1) !important;
+}
+
 @keyframes float-gentle {
   0%, 100% {
     transform: translateY(0);

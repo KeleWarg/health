@@ -167,9 +167,9 @@ export function OutcomeStats() {
         </div>
 
         {/* Mobile: 2×2 grid */}
-        <div className="md:hidden grid grid-cols-2 gap-4">
+        <div className="md:hidden grid grid-cols-2 gap-x-4 gap-y-6">
           {stats.map((stat) => (
-            <div key={stat.label} className="p-5">
+            <div key={stat.label}>
               <StatValue end={stat.value} suffix={stat.suffix} trigger={visible} />
               <p className="text-white/60 text-sm leading-relaxed mt-2">
                 {stat.label}
