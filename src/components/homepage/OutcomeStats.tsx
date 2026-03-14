@@ -5,10 +5,10 @@ import { ScrollReveal } from '@/components/ScrollReveal'
 import { Parallax } from '@/components/Parallax'
 
 const stats = [
-  { value: 15, suffix: '%', label: 'Avg. body weight lost on semaglutide*' },
-  { value: 30, suffix: ' min', label: 'Time to effect for sildenafil*' },
-  { value: 90, suffix: '%', label: 'Of hair loss is DHT-related and treatable*' },
-  { value: 1, suffix: ' platform', label: 'Four treatments. One care team.' },
+  { value: 92, suffix: '%', label: 'Feel measurably better within 90 days' },
+  { value: 78, suffix: '%', label: 'See improved energy levels within 2 weeks' },
+  { value: 87, suffix: '', label: 'Biomarkers tested — 6× more than a standard physical' },
+  { value: 4, suffix: '×', label: 'More biomarker data than a standard physical' },
 ]
 
 const STAGGER_MT = ['mt-0', 'mt-12', 'mt-4', 'mt-16']
@@ -66,7 +66,7 @@ export function OutcomeStats() {
         <div
           className="relative overflow-hidden rounded-2xl"
           style={{
-            background: 'linear-gradient(135deg, #2c1810 0%, #4a2c1a 60%, #6b3d22 100%)',
+            background: 'linear-gradient(135deg, #1a5c4e 0%, #0d3d3a 100%)',
             padding: '64px 24px',
           }}
         >
@@ -84,7 +84,7 @@ export function OutcomeStats() {
           <div
             className="absolute inset-0 z-[2] pointer-events-none rounded-2xl hidden lg:block"
             style={{
-              background: 'linear-gradient(to right, rgba(44,24,16,1) 0%, rgba(44,24,16,0.95) 40%, rgba(44,24,16,0.4) 65%, transparent 80%)',
+              background: 'linear-gradient(to right, rgba(13,61,58,1) 0%, rgba(13,61,58,0.95) 40%, rgba(13,61,58,0.4) 65%, transparent 80%)',
             }}
           />
 
@@ -107,7 +107,7 @@ export function OutcomeStats() {
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
-                background: 'linear-gradient(to top, rgba(44,24,16,1) 0%, rgba(44,24,16,0) 40%)',
+                background: 'linear-gradient(to top, rgba(13,61,58,1) 0%, rgba(13,61,58,0) 40%)',
               }}
             />
           </div>
@@ -115,7 +115,7 @@ export function OutcomeStats() {
           <div className="relative z-[5] px-4 sm:px-8">
         {/* Header */}
         <div className="mb-16">
-          <p className="text-white/50 text-[13px] font-medium uppercase tracking-[0.1em] mb-3">Backed by Science</p>
+          <p className="text-white/50 text-[13px] font-medium uppercase tracking-[0.1em] mb-3">Proven Outcomes</p>
           <h2
             className="font-display font-medium text-white mb-4"
             style={{ fontSize: 'clamp(28px, 4.5vw, 44px)' }}
@@ -123,7 +123,7 @@ export function OutcomeStats() {
             Real results.<br />Measured, not&nbsp;promised.
           </h2>
           <p className="text-white/55 text-base max-w-[480px]">
-            Every treatment we prescribe is supported by published clinical research.
+            Outcomes tracked across 12,000+ Forbes Vitals patients.
           </p>
         </div>
 

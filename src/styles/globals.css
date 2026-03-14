@@ -83,8 +83,6 @@
 
 @layer base {
   html {
-    overflow-x: hidden;
-    scrollbar-gutter: stable;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -116,9 +114,6 @@
 @layer utilities {
   .bg-page-gradient {
     background: linear-gradient(180deg, #FAFAF8 0%, #F2F0EC 100%);
-  }
-  .bg-hero-gradient {
-    background: linear-gradient(135deg, #0a2620 0%, #061a18 100%);
   }
 }
 
@@ -924,64 +919,6 @@
   .grid.sm\:grid-cols-3 > .wfv-cell:nth-child(-n+3) {
     border-bottom: 1px solid rgba(26,26,46,0.12) !important;
   }
-}
-
-/* ============================================
-   FEATURED CARD FLOATING IMAGE
-   ============================================ */
-
-@keyframes cardFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
-}
-
-.animate-card-float {
-  animation: cardFloat 3.5s ease-in-out infinite;
-}
-
-@keyframes cardShadow {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.25;
-    filter: blur(5px);
-  }
-  50% {
-    transform: scale(0.75);
-    opacity: 0.12;
-    filter: blur(8px);
-  }
-}
-
-.animate-card-shadow {
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  animation: cardShadow 3.5s ease-in-out infinite;
-}
-
-/* ============================================
-   HIGHLIGHTS CAROUSEL
-   ============================================ */
-
-.highlights-scroll-container {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.highlights-scroll-container::-webkit-scrollbar {
-  display: none;
-}
-
-@keyframes highlightsProgress {
-  from { transform: scaleX(0); }
-  to   { transform: scaleX(1); }
-}
-
-.highlights-progress {
-  transform-origin: left;
 }
 
 /* ============================================
