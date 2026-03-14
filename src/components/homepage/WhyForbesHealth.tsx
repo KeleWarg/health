@@ -84,7 +84,7 @@ const CELLS = [
   },
 ]
 
-export function WhyForbesVitals() {
+export function WhyForbesHealth() {
   const lineRef = React.useRef<HTMLDivElement>(null)
 
   React.useEffect(() => {

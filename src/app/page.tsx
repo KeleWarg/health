@@ -5,19 +5,13 @@ import { Nav } from '@/components/homepage/Nav'
 import { Hero } from '@/components/homepage/Hero'
 import { TrustTicker } from '@/components/homepage/TrustTicker'
 import { ProductSection } from '@/components/homepage/ProductSection'
-import { BmiCalculator } from '@/components/homepage/BmiCalculator'
 import { OutcomeStats } from '@/components/homepage/OutcomeStats'
-// QualificationCards now embedded inside OutcomeStats
 import { ExpertTeam } from '@/components/homepage/ExpertTeam'
-import { PeptideJourney } from '@/components/homepage/PeptideJourney'
-import { ClinicalTrust } from '@/components/homepage/ClinicalTrust'
-import { CmoTrust } from '@/components/homepage/CmoTrust'
-import { WhyForbesVitals } from '@/components/homepage/WhyForbesVitals'
+import { WhyForbesHealth } from '@/components/homepage/WhyForbesHealth'
 import { Faq } from '@/components/homepage/Faq'
 import { Footer } from '@/components/homepage/Footer'
 import { ScrollReveal } from '@/components/ScrollReveal'
 import { PageTransition } from '@/components/PageTransition'
-import { VitalityCurve } from '@/components/homepage/VitalityCurve'
 
 
 const NAD_DATA = {
@@ -135,38 +129,6 @@ const TESTOSTERONE_DATA = {
   className: '!pt-10 sm:!pt-14 !pb-0',
 }
 
-const BIOMARKER_DATA = {
-  id: 'biomarkers',
-  eyebrow: 'Comprehensive Biomarker Testing',
-  h2: 'The most empowering thing you can do for your health ',
-  h2Accent: 'takes one blood draw.',
-  h3: '87 markers. The test your annual physical was never designed to give you.',
-  body: "Metabolic, hormonal, cardiovascular, thyroid, and inflammatory — the markers that explain how you feel, why you feel it, and what you can do about it. One test gives you the full picture.",
-  checklistTitle: "One test. Answers you've never had:",
-  checklist: [
-    "87 biomarkers across 5 categories your physical doesn't cover",
-    'Your BioIQ score — one number showing what to prioritize',
-    'A health signal map showing exactly where to focus',
-    'Clinician-reviewed results with actionable next steps',
-    'HSA/FSA eligible — $1.09/day for 87 markers',
-  ],
-  quizHref: 'https://biomarker-topaz.vercel.app/biomarkers',
-  learnHref: '/biomarkers-info',
-  legal: 'Biomarker testing provided by CLIA-certified laboratories. Results reviewed by board-certified clinicians.',
-  carousel: [
-    { goalLabel: 'Category', goalValue: 'Metabolic', markerName: 'HbA1c', markerLabel: 'Blood Sugar Control', bullets: ['Insulin sensitivity', 'Long-term glucose trends'], gradientFrom: '#c8ddd7', gradientTo: '#7aab99' },
-    { goalLabel: 'Category', goalValue: 'Hormonal', markerName: '23 ng/dL', markerLabel: 'Free Testosterone', bullets: ['Energy & libido', 'Muscle & mood balance'], gradientFrom: '#e8d4d9', gradientTo: '#c49fa8' },
-    { goalLabel: 'Category', goalValue: 'Cardiovascular', markerName: 'Lp(a)', markerLabel: 'Heart Risk Marker', bullets: ['Genetic cardiac risk', 'Cholesterol subtype analysis'], gradientFrom: '#d4d9e8', gradientTo: '#9fa8c4' },
-    { goalLabel: 'Category', goalValue: 'Thyroid', markerName: 'TSH', markerLabel: 'Thyroid Function', bullets: ['Weight & fatigue link', 'T3/T4 conversion'], gradientFrom: '#e8e4c8', gradientTo: '#c4b87a' },
-    { goalLabel: 'Category', goalValue: 'Inflammatory', markerName: 'hs-CRP', markerLabel: 'Inflammation Level', bullets: ['Silent inflammation', 'Longevity risk signal'], gradientFrom: '#dce8d4', gradientTo: '#a8c49f' },
-  ],
-  heroImage: '/Step - 5.png',
-  heroImageAlt: 'Woman feeling energized outdoors',
-  secondaryImage: '/adult walk.png',
-  checklistImage: '/chart card carousel60s.png',
-  checklistButtonText: 'Get your BioIQ',
-  checklistBackground: 'linear-gradient(135deg, #2c1810 0%, #4a2c1a 60%, #6b3d22 100%)',
-}
 
 export default function HomePage() {
   return (
@@ -178,14 +140,9 @@ export default function HomePage() {
         <ScrollReveal><ProductSection {...HAIR_LOSS_DATA} reversed /></ScrollReveal>
         <ScrollReveal><ProductSection {...ED_DATA} /></ScrollReveal>
         <ScrollReveal><ProductSection {...TESTOSTERONE_DATA} reversed /></ScrollReveal>
-        {/* <ScrollReveal><ProductSection {...BIOMARKER_DATA} reversed /></ScrollReveal> */}
-        {/* <ScrollReveal><BmiCalculator /></ScrollReveal> */}
         <ScrollReveal><OutcomeStats /></ScrollReveal>
         <ScrollReveal><ExpertTeam /></ScrollReveal>
-        {/* <ScrollReveal><PeptideJourney /></ScrollReveal> */}
-        {/* <ClinicalTrust /> */}
-        {/* <CmoTrust /> */}
-        <ScrollReveal><WhyForbesVitals /></ScrollReveal>
+        <ScrollReveal><WhyForbesHealth /></ScrollReveal>
         <ScrollReveal><TrustTicker /></ScrollReveal>
         <ScrollReveal><Faq /></ScrollReveal>
         <ScrollReveal><Footer /></ScrollReveal>
