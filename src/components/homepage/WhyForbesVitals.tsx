@@ -5,12 +5,6 @@ import Link from 'next/link'
 import { ScrollReveal } from '@/components/ScrollReveal'
 
 const ICONS: Record<string, React.ReactNode> = {
-  'Biomarker Testing': (
-    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-      <path d="M11 4v3m0 0v10a3 3 0 0 0 6 0V7m-6 0h6m-6 5h6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <circle cx="14" cy="20" r="1" fill="currentColor" opacity="0.4"/>
-    </svg>
-  ),
   'Clinical Oversight': (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
       <path d="M10 13.5a4 4 0 1 1 8 0M14 5v4m0 0h-2m2 0h2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -25,7 +19,12 @@ const ICONS: Record<string, React.ReactNode> = {
       <path d="M13.5 11v1m0 5v1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
     </svg>
   ),
-  'Personalized Therapy': (
+  'Proven Treatments': (
+    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+      <path d="M14 4l2.5 5.5H22l-4.5 3.5 1.5 5.5L14 15l-5 3.5 1.5-5.5L6 9.5h5.5L14 4z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+    </svg>
+  ),
+  'Ongoing Care': (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
       <path d="M8 8v12M14 8v12M20 8v12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
       <circle cx="8" cy="17" r="2.5" fill="currentColor" opacity="0.12" stroke="currentColor" strokeWidth="1.5"/>
@@ -33,53 +32,54 @@ const ICONS: Record<string, React.ReactNode> = {
       <circle cx="20" cy="14" r="2.5" fill="currentColor" opacity="0.12" stroke="currentColor" strokeWidth="1.5"/>
     </svg>
   ),
-  'Real Outcomes': (
+  'Privacy First': (
     <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
-      <path d="M4 22l6-6 4 3 10-11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-      <path d="M18 8h6v6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+      <rect x="6" y="12" width="16" height="11" rx="2" stroke="currentColor" strokeWidth="1.5"/>
+      <path d="M10 12V9a4 4 0 0 1 8 0v3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+      <circle cx="14" cy="17.5" r="1.5" fill="currentColor"/>
     </svg>
   ),
 }
 
 const CELLS = [
   {
-    badge: 'Biomarker Testing',
-    headline: '87 markers. Not 14.',
-    bullets: [
-      'Metabolic, hormonal, thyroid, cardiovascular, inflammatory',
-      'All in one draw. Results in days.',
-    ],
-  },
-  {
     badge: 'Clinical Oversight',
     headline: 'Every prescription starts with a physician.',
     bullets: [
-      'Board-certified review before anything ships',
-      '24hr average approval time',
+      'Board-certified review before anything ships.',
+      '24hr average approval time.',
     ],
   },
   {
     badge: '$0 Until Prescribed',
     headline: "You don't pay until approved.",
     bullets: [
-      'No charge if not prescribed',
-      'HSA / FSA eligible',
+      'No charge if not prescribed.',
+      'HSA/FSA eligible.',
     ],
   },
   {
-    badge: 'Personalized Therapy',
-    headline: 'A protocol that evolves with you.',
+    badge: 'Proven Treatments',
+    headline: 'FDA-approved medications only.',
     bullets: [
-      'Dosed to your biomarkers, BMI, and goals',
-      'Adjusted as your labs improve',
+      'Semaglutide, finasteride, sildenafil, testosterone.',
+      'No supplements. No guesswork.',
     ],
   },
   {
-    badge: 'Real Outcomes',
-    headline: '92% feel measurably better within 90 days.',
+    badge: 'Ongoing Care',
+    headline: 'Your treatment adjusts with you.',
     bullets: [
-      'Tracked through real biomarker data',
-      'Most notice a difference within 2 weeks',
+      'Dose changes, check-ins, and prescription updates.',
+      'All online.',
+    ],
+  },
+  {
+    badge: 'Privacy First',
+    headline: 'Discreet from start to finish.',
+    bullets: [
+      'Plain packaging. No branding on the box.',
+      'HIPAA-compliant records.',
     ],
   },
 ]
@@ -88,17 +88,17 @@ export function WhyForbesVitals() {
   return (
     <section className="py-16 sm:py-24">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
-        <div className="mb-10">
+        <div className="lg:w-[75%] mx-auto text-center mb-10">
           <p className="text-primary text-[13px] font-medium uppercase tracking-[0.1em] mb-3">The Difference</p>
           <h2 className="text-dark text-headline-md sm:text-display lg:text-display-md font-medium mb-4">
-            Why people choose<br />Forbes Vitals.
+            Why people choose<br />Forbes Health.
           </h2>
-          <p className="text-muted text-body leading-relaxed max-w-[640px]">
-            &ldquo;The standard of care most people receive misses the markers that matter most.&rdquo;
+          <p className="text-muted text-body leading-relaxed max-w-[640px] mx-auto">
+            &ldquo;Most people don&apos;t need a doctor&apos;s office. They need a doctor who listens, and medication that actually arrives.&rdquo;
           </p>
           <p className="mt-2 text-dark text-body font-semibold">
-            Dr. James Liu, M.D.
-            <span className="font-normal text-muted-light"> · Chief Medical Officer, Forbes Vitals</span>
+            Dr. Patrick Carroll, M.D.
+            <span className="font-normal text-muted-light"> · Chief Medical Officer, Forbes Health</span>
           </p>
         </div>
 
@@ -169,16 +169,25 @@ export function WhyForbesVitals() {
                   <path d="M14 9.5v9M9.5 14h9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                 </svg>
               </div>
-              <h3 className="text-dark text-headline-sm mb-2">
-                Everything<br />included.
+              <h3 className="text-dark text-headline-sm mb-1">
+                Four categories.<br />One care team.
               </h3>
+              <span className="inline-flex items-center gap-1.5 text-primary text-caption font-medium">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="shrink-0">
+                  <path d="M7 1.75v10.5M4.5 3.5v7M9.5 3.5v7M2 5.25v3.5" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round"/>
+                </svg>
+                Everything Included
+              </span>
             </div>
             <div className="mt-4">
               <Link
                 href="https://peptides-fpe5.vercel.app/"
                 className="inline-flex items-center justify-center gap-2 text-primary text-[14px] font-medium px-5 py-2.5 rounded-full border border-primary/30 hover:bg-primary/[0.04] transition-colors"
               >
-                See what&apos;s in your protocol
+                Browse treatments
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+                  <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </Link>
             </div>
           </div>

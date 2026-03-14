@@ -2,6 +2,8 @@
 
 import * as React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import { TrustTicker } from './TrustTicker'
 
 const CDN = 'https://pub-2f75537729e74145a7fc2b8d6fcc519e.r2.dev'
 
@@ -17,36 +19,36 @@ const HERO_VIDEOS = [
 const FADE_MS = 800
 const INTERVAL_MS = 7000
 
-const NAV_CARDS = [
+const FEATURED_CARDS = [
   {
-    label: 'NAD+ Therapy',
-    hook: 'Restore your energy at the cellular level.',
-    quizHref: 'https://peptides-fpe5.vercel.app/',
-    learnHref: '/nad',
-    image: '/NAD+.png',
-    bg: 'linear-gradient(135deg, #1a5c4e 0%, #0d3d3a 100%)',
-    bgHover: 'linear-gradient(135deg, #238068 0%, #145c50 100%)',
-    isGradient: true,
-    rotateImage: true,
+    label: 'Weight Loss',
+    hook: 'Clinician-guided plans that work.',
+    href: '#',
+    bg: '#edf5f2',
+    hoverBg: 'linear-gradient(135deg, #1a2019 0%, #2e3528 60%, #434d38 100%)',
+    image: '/weight-loss-generated-new.png',
+    glowColor: 'rgba(218, 175, 85, 0.55)',
   },
   {
-    label: 'Biomarker Testing',
-    hook: '87 markers. The test your physical never runs.',
-    quizHref: 'https://biomarker-topaz.vercel.app/biomarkers',
-    learnHref: '/biomarkers-info',
-    image: '/step5-nobg.png',
-    bg: 'linear-gradient(135deg, #2c1810 0%, #4a2c1a 60%, #6b3d22 100%)',
-    bgHover: 'linear-gradient(135deg, #4a2c1a 0%, #6b3d22 50%, #8a5230 100%)',
-    isGradient: true,
-    rotateImage: false,
-    imageOffsetBottom: '-20px',
+    label: 'Hair Loss',
+    hook: 'Thicker hair starts here.',
+    href: '#',
+    bg: '#f2ece6',
+    hoverBg: 'linear-gradient(135deg, #2c1810 0%, #4a2c1a 60%, #6b3d22 100%)',
+    image: '/hair-loss-generated.png',
+    glowColor: 'rgba(218, 175, 85, 0.55)',
   },
 ]
 
+const COMPACT_CARDS = [
+  { label: 'ED Medication', href: '#', bg: '#E8EBF0', hoverBg: 'linear-gradient(135deg, #2c1810 0%, #4a2c1a 60%, #6b3d22 100%)', image: '/ed-pill.png' },
+  { label: 'More Testosterone', href: '#', bg: '#F2EBE8', hoverBg: 'linear-gradient(135deg, #1a2019 0%, #2e3528 60%, #434d38 100%)', image: '/trt-generated-new.png' },
+]
+
 const SENTENCES = [
-  { prefix: 'Live with more ', accent: 'energy.' },
-  { prefix: 'Supercharge ', accent: 'your body.' },
-  { prefix: 'Trust what ', accent: 'you feel.' },
+  { prefix: 'Weight loss ', accent: 'that actually works.' },
+  { prefix: 'Thicker hair ', accent: 'in months, not years.' },
+  { prefix: 'ED treatment ', accent: 'without the visit.' },
 ]
 const TYPE_SPEED = 50
 const DELETE_SPEED = 30
@@ -142,9 +144,10 @@ export function Hero() {
   }, [displayed, isDeleting, fullText])
 
   return (
+    <>
     <section
       id="hero"
-      className="relative min-h-[60vh] flex items-center justify-center"
+      className="relative overflow-hidden"
       style={{ background: 'linear-gradient(135deg, #1a5c4e 0%, #0d3d3a 100%)' }}
     >
       {/* <HeroVideoBackground /> */}
@@ -156,9 +159,9 @@ export function Hero() {
         backgroundSize: '40px 40px',
       }} />
 
-      <div className="relative z-10 max-w-[800px] mx-auto px-4 sm:px-6 text-center pt-44 pb-28">
+      <div className="relative z-10 max-w-[800px] mx-auto px-4 sm:px-6 text-center pt-24 pb-[72px]">
         <p className="text-white/60 text-[13px] tracking-[0.12em] uppercase mb-5 animate-fade-in-up stagger-1">
-          Clinician-Prescribed · Delivered to Your Door
+          Every treatment you need
         </p>
 
         <h1 className="font-display text-white text-[clamp(3rem,6.5vw,4.5rem)] font-medium leading-[1.08] tracking-[-0.02em] mb-5 min-h-[2.16em] animate-fade-in-up stagger-2">
@@ -181,79 +184,131 @@ export function Hero() {
         </h1>
 
         <p className="text-white/70 text-lg font-medium max-w-[560px] mx-auto mt-8 mb-8 animate-fade-in-up stagger-3">
-          Your biology has answers your last physical never found.
+          Licensed clinicians prescribe FDA-approved treatments — delivered discreetly to your door.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-3 mb-8 animate-fade-in-up stagger-4">
-          <Link
-            href="https://peptides-fpe5.vercel.app/"
-            className="inline-flex items-center justify-center gap-2 bg-white text-neutral-900 font-medium text-[15px] px-7 py-3.5 rounded-lg hover:bg-white/90 transition-colors w-full sm:w-auto"
-          >
-            Discover Your Vitality Index
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
-              <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </Link>
-          <Link
-            href="https://biomarker-topaz.vercel.app/biomarkers"
-            className="inline-flex items-center justify-center gap-2 text-white font-medium text-[15px] px-7 py-3.5 rounded-lg border border-white/25 hover:bg-white/[0.08] transition-colors w-full sm:w-auto"
-          >
-            Discover Your BioIQ
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className="flex-shrink-0">
-              <path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </Link>
-        </div>
-
-        <p className="text-white/40 text-sm mb-12 animate-fade-in-up stagger-5">
-          87 biomarkers · Board-certified clinicians · $0 to start
+        <p className="text-white/40 text-sm mb-0 animate-fade-in-up stagger-4">
+          Board-certified MDs · Free shipping · HSA/FSA accepted
         </p>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 translate-y-[75%] sm:translate-y-1/2 z-20 px-4 sm:px-6">
-        <div className="max-w-[840px] mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {NAV_CARDS.map((card, i) => (
-            <Link
-              key={card.label}
-              href={card.quizHref}
-              className="group relative rounded-2xl transition-all duration-300 block hover:shadow-[0_16px_48px_rgba(0,0,0,0.35)] shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:-translate-y-1"
-              style={{ background: card.bg }}
-            >
-              <div
-                className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{ background: card.bgHover }}
-              />
-              <div className="relative flex flex-col h-[180px] overflow-hidden rounded-2xl">
-                <div className="relative z-10 px-5 pt-5 pb-5 flex-1 flex flex-col">
-                  <p className="font-semibold text-[22px] leading-tight mb-1.5 text-white">
-                    {card.label}
-                  </p>
-                  <p className="text-[15px] font-medium leading-snug max-w-[55%] text-white/50">{card.hook}</p>
-                  <span className="absolute bottom-4 right-4 z-10 inline-flex items-center justify-center w-8 h-8 rounded-full border border-white/30 group-hover:border-white/70 group-hover:bg-white/10 transition-all duration-300">
-                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="text-white/60 group-hover:text-white group-hover:translate-x-[1px] transition-all duration-300">
-                      <path d="M3 7h8m0 0L7.5 3.5M11 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
-                </div>
-
-                <div className="absolute right-0 bottom-0 h-full flex items-end justify-center" style={{ width: card.rotateImage ? '45%' : 'auto', bottom: card.imageOffsetBottom ?? '0px' }}>
-                  <img
-                    src={card.image}
-                    alt={card.label}
-                    className="object-contain pointer-events-none max-w-none"
-                    style={{
-                      height: card.rotateImage ? '160px' : '170px',
-                      filter: `drop-shadow(0 12px 28px rgba(0,0,0,${card.rotateImage ? '0.45' : '0.3'}))`,
-                      animation: `${card.rotateImage ? 'float-gentle-tilted-12' : 'float-gentle'} 3s ease-in-out ${i * 1.2}s infinite`,
-                    }}
-                  />
-                </div>
-
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
     </section>
+
+      <TrustTicker />
+
+      <div className="px-4 sm:px-6 py-6">
+        <div className="max-w-[960px] mx-auto flex flex-col gap-3">
+          {/* Featured cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {FEATURED_CARDS.map((card, i) => {
+              const delay = `${i * 0.9}s`
+              return (
+              <Link
+                key={card.label}
+                href={card.href}
+                className="group relative block rounded-2xl overflow-visible shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-[transform,box-shadow] duration-300 ease-out hover:shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:scale-[1.015]"
+                style={{ background: card.bg }}
+              >
+                <div
+                  className="absolute inset-0 rounded-2xl overflow-hidden"
+                  style={{ background: card.bg }}
+                />
+                <div
+                  className="absolute inset-0 rounded-2xl overflow-hidden opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
+                  style={{ background: card.hoverBg }}
+                />
+                <div className="relative flex flex-col h-[140px]">
+                  <div className="relative z-10 px-5 pt-5 pb-5 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className="font-semibold text-[20px] leading-tight text-[#2a2520] transition-colors duration-300 group-hover:text-white">
+                        {card.label}
+                      </h3>
+                      <p className="text-[14px] leading-snug mt-1 max-w-[55%] text-[#6b6158] transition-colors duration-300 group-hover:text-white/70">{card.hook}</p>
+                    </div>
+                    <div className="flex items-center justify-between">
+                      <span />
+                      <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-black/[0.05] transition-colors duration-300 group-hover:bg-white/15">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="text-[#6b6158] transition-colors duration-300 group-hover:text-white/80">
+                          <path d="M5.25 3.5L8.75 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                  {card.image && (
+                    <>
+                      <div
+                        className="absolute right-[12%] bottom-[6px] w-[30%] h-[10px] rounded-full pointer-events-none z-[19] animate-card-shadow"
+                        style={{ animationDelay: delay }}
+                      />
+                      <div
+                        className="absolute right-[5%] top-1/2 -translate-y-1/2 w-[50%] aspect-square rounded-full pointer-events-none z-[18] opacity-0 transition-opacity duration-500 group-hover:opacity-100 blur-[30px]"
+                        style={{ background: `radial-gradient(circle, ${card.glowColor} 0%, transparent 70%)` }}
+                      />
+                      <div className="absolute right-[-8px] top-[calc(50%-12px)] -translate-y-1/2 h-[150%] w-[55%] pointer-events-none z-20">
+                        <div
+                          className="relative w-full h-full animate-card-float"
+                          style={{ animationDelay: delay }}
+                        >
+                          <Image
+                            src={card.image}
+                            alt={card.label}
+                            fill
+                            className="object-contain object-right transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                            sizes="(max-width: 640px) 45vw, 200px"
+                          />
+                        </div>
+                      </div>
+                    </>
+                  )}
+                </div>
+              </Link>
+              )
+            })}
+          </div>
+
+          {/* Compact cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {COMPACT_CARDS.map((card, i) => (
+              <Link
+                key={card.label}
+                href={card.href}
+                className="group relative block rounded-2xl overflow-hidden transition-[transform,box-shadow] duration-300 ease-out hover:shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:scale-[1.015]"
+                style={{ background: card.bg }}
+              >
+                <div
+                  className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
+                  style={{ background: card.hoverBg }}
+                />
+                <div className="relative z-10 flex items-center justify-between h-[72px] px-5">
+                  <p className="font-semibold text-[15px] text-neutral-800 transition-colors duration-300 group-hover:text-white">{card.label}</p>
+                  <div className="flex items-center gap-3">
+                    {/* @ts-ignore */}
+                    {card.image && (
+                      <div className="relative w-20 h-20">
+                        <div className="w-full h-full animate-card-float" style={{ animationDelay: `${i * 0.5}s` }}>
+                          <Image
+                            // @ts-ignore
+                            src={card.image}
+                            alt={card.label}
+                            fill
+                            className="object-contain"
+                            sizes="80px"
+                          />
+                        </div>
+                      </div>
+                    )}
+                    <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-black/[0.04] transition-colors duration-300 group-hover:bg-white/15">
+                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" className="text-neutral-500 transition-colors duration-300 group-hover:text-white/80">
+                        <path d="M5.25 3.5L8.75 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
   )
 }

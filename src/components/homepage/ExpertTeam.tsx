@@ -15,13 +15,13 @@ export function ExpertTeam() {
   return (
     <section id="team" className="bg-surface py-16 sm:py-24">
       <div className="max-w-[1280px] mx-auto px-4 sm:px-6">
-        <div className="lg:w-[50%] mb-10">
+        <div className="lg:w-[75%] mx-auto text-center mb-10">
           <p className="text-primary text-[13px] font-medium uppercase tracking-[0.1em] mb-3">Advisory Board</p>
           <h2 className="text-neutral-900 text-headline-md sm:text-display lg:text-display-md font-medium mb-4">
             The standard of care starts with <em className="not-italic text-primary">the people who set it.</em>
           </h2>
           <p className="text-neutral-500 text-body leading-relaxed">
-            Forbes Vitals protocols are developed and reviewed by a medical advisory board of board-certified physicians and researchers who have spent careers at the intersection of longevity, performance, and clinical medicine.
+            Forbes Health treatments are developed and reviewed by a medical advisory board of board-certified physicians and researchers who have spent careers at the intersection of longevity, performance, and clinical medicine.
           </p>
         </div>
 

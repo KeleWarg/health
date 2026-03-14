@@ -24,7 +24,7 @@ export function TrustTicker() {
         <div
           className="flex whitespace-nowrap"
           style={{
-            animation: 'marquee 45s linear infinite',
+            animation: 'marquee 12s linear infinite',
           }}
         >
           {items.map((item, i) => (
