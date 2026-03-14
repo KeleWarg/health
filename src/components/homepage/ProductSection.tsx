@@ -350,7 +350,7 @@ export function ProductSection({
                     <div className="mb-6 lg:mb-0 lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-[35%] h-[240px] lg:h-auto flex items-center justify-center">
                       {checklistWidget ?? (
                         <Image
-                          src={checklistImage}
+                          src={checklistImage!}
                           alt=""
                           width={400}
                           height={400}
