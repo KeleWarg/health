@@ -405,6 +405,15 @@
   }
 }
 
+:root {
+  --ticker-speed: 8s;
+}
+@media (min-width: 768px) {
+  :root {
+    --ticker-speed: 12s;
+  }
+}
+
 .animate-line-grow {
   transform: scaleY(1) !important;
 }
