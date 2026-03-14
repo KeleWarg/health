@@ -116,8 +116,11 @@ export function WhyForbesVitals() {
                 key={cell.badge}
                 className="wfv-cell"
                 style={{
-                  borderBottom: rowIn2 < lastRowMobile ? border : undefined,
-                  borderLeft: colIn2 === 1 ? border : undefined,
+                  borderBottomWidth: rowIn2 < lastRowMobile ? 1 : undefined,
+                  borderBottomStyle: rowIn2 < lastRowMobile ? 'solid' : undefined,
+                  borderLeftWidth: colIn2 === 1 ? 1 : undefined,
+                  borderLeftStyle: colIn2 === 1 ? 'solid' : undefined,
+                  borderColor: 'rgba(26,26,46,0.12)',
                   paddingLeft: colIn2 === 1 ? 20 : undefined,
                   paddingRight: colIn2 === 0 ? 20 : undefined,
                 }}
@@ -156,7 +159,9 @@ export function WhyForbesVitals() {
           <div
             className="wfv-cell"
             style={{
-              borderLeft: '1px solid rgba(26,26,46,0.12)',
+              borderLeftWidth: 1,
+              borderLeftStyle: 'solid',
+              borderColor: 'rgba(26,26,46,0.12)',
               paddingLeft: 20,
             }}
           >

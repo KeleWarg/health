@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
 import '@/styles/globals.css'
+import { DisableLinks } from '@/components/DisableLinks'
 
 export const metadata: Metadata = {
-  title: 'Forbes Vitals — Clinician-Led Health Programs',
-  description: 'Two clinician-led programs designed to help you feel better, age slower, and understand what\'s really going on inside your body.',
+  title: 'Forbes Health — Clinician-Led Health Programs',
+  description: 'Clinician-led treatments for weight loss, hair loss, ED, and testosterone — prescribed online and shipped to your door.',
 }
 
 export default function RootLayout({
@@ -14,7 +15,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body className="font-sans bg-surface">{children}</body>
+      <body className="font-sans bg-surface">
+        <DisableLinks />
+        {children}
+      </body>
     </html>
   )
 }

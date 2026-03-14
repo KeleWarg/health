@@ -903,8 +903,30 @@
 }
 
 /* ============================================
-   WHY FORBES VITALS GRID BORDERS
+   WHY FORBES HEALTH GRID BORDERS
    ============================================ */
+.wfv-cell {
+  position: relative;
+  transition: border-color 0.4s ease;
+  border-color: rgba(26,26,46,0.12);
+}
+.wfv-cell::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 4px;
+  background: radial-gradient(ellipse at center, rgba(42, 107, 90, 0.10) 0%, rgba(42, 107, 90, 0.03) 70%, transparent 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+.wfv-cell:hover::before {
+  opacity: 1;
+}
+.wfv-cell:hover {
+  border-color: rgba(42, 107, 90, 0.35) !important;
+}
+
 @media (min-width: 640px) {
   .wfv-cell {
     padding-left: 0 !important;
@@ -918,11 +940,18 @@
     padding-right: 24px !important;
     border-left: 1px solid rgba(26,26,46,0.12) !important;
   }
+  .grid.sm\:grid-cols-3 > .wfv-cell:nth-child(3n+2):hover,
+  .grid.sm\:grid-cols-3 > .wfv-cell:nth-child(3n+3):hover {
+    border-left-color: rgba(42, 107, 90, 0.35) !important;
+  }
   .grid.sm\:grid-cols-3 > .wfv-cell:nth-child(3n+1) {
     padding-right: 24px !important;
   }
   .grid.sm\:grid-cols-3 > .wfv-cell:nth-child(-n+3) {
     border-bottom: 1px solid rgba(26,26,46,0.12) !important;
+  }
+  .grid.sm\:grid-cols-3 > .wfv-cell:nth-child(-n+3):hover {
+    border-bottom-color: rgba(42, 107, 90, 0.35) !important;
   }
 }
 

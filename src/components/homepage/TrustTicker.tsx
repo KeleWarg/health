@@ -9,7 +9,7 @@ const TICKER_ITEMS = [
   { headline: 'Free Delivery', sub: 'Shipped to your door' },
   { headline: 'Clear Pricing', sub: 'No hidden fees' },
   { headline: '$0 Due Until Prescribed', sub: 'Pay only if approved' },
-  { headline: '12,000+ Patients', sub: 'Backed by Forbes Vitals' },
+  { headline: '12,000+ Patients', sub: 'Backed by Forbes Health' },
   { headline: '87+ Biomarkers', sub: 'Tested 2x per year' },
 ]
 

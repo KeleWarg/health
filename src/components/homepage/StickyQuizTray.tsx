@@ -93,7 +93,7 @@ export function StickyQuizTray({ open, onToggle }: StickyQuizTrayProps) {
             </svg>
           </button>
           <p className="text-white/50 text-[11px] pb-1">
-            Powered by Forbes Vitals
+            Powered by Forbes Health
           </p>
         </div>
       </div>

@@ -41,8 +41,8 @@ const FEATURED_CARDS = [
 ]
 
 const COMPACT_CARDS = [
-  { label: 'ED Medication', href: '#', bg: '#E8EBF0', hoverBg: 'linear-gradient(135deg, #2c1810 0%, #4a2c1a 60%, #6b3d22 100%)', image: '/ed-pill.png' },
-  { label: 'More Testosterone', href: '#', bg: '#F2EBE8', hoverBg: 'linear-gradient(135deg, #1a2019 0%, #2e3528 60%, #434d38 100%)', image: '/trt-generated-new.png' },
+  { label: 'ED Medication', href: '#', bg: '#E8EBF0', hoverBg: 'linear-gradient(135deg, #2c1810 0%, #4a2c1a 60%, #6b3d22 100%)', image: '/ed-pill.png', glowColor: 'rgba(218, 175, 85, 0.55)' },
+  { label: 'More Testosterone', href: '#', bg: '#F2EBE8', hoverBg: 'linear-gradient(135deg, #1a2019 0%, #2e3528 60%, #434d38 100%)', image: '/trt-generated-new.png', glowColor: 'rgba(218, 175, 85, 0.55)' },
 ]
 
 const SENTENCES = [
@@ -285,7 +285,11 @@ export function Hero() {
                     {/* @ts-ignore */}
                     {card.image && (
                       <div className="relative w-20 h-20">
-                        <div className="w-full h-full animate-card-float" style={{ animationDelay: `${i * 0.5}s` }}>
+                        <div
+                          className="absolute inset-0 rounded-full pointer-events-none opacity-0 transition-opacity duration-500 group-hover:opacity-100 blur-[20px] scale-125"
+                          style={{ background: `radial-gradient(circle, ${card.glowColor} 0%, transparent 70%)` }}
+                        />
+                        <div className="relative w-full h-full animate-card-float" style={{ animationDelay: `${i * 0.5}s` }}>
                           <Image
                             // @ts-ignore
                             src={card.image}

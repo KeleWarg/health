@@ -19,30 +19,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
     setActive(true)
   }, [active])
 
-  React.useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      const anchor = (e.target as HTMLElement).closest('a[href]') as HTMLAnchorElement | null
-      if (!anchor) return
-
-      const href = anchor.getAttribute('href') || ''
-      const isExternal = href.startsWith('http://') || href.startsWith('https://')
-      if (!isExternal) return
-
-      e.preventDefault()
-      navigate(href)
-    }
-
-    document.addEventListener('click', handleClick, true)
-    return () => document.removeEventListener('click', handleClick, true)
-  }, [navigate])
-
-  React.useEffect(() => {
-    if (!active) return
-    const timer = setTimeout(() => {
-      window.location.href = targetRef.current
-    }, 4000)
-    return () => clearTimeout(timer)
-  }, [active])
+  void navigate
 
   return (
     <TransitionCtx.Provider value={navigate}>

@@ -27,7 +27,7 @@ export function ExpertCare() {
           {/* Mock app screen */}
           <div className="rounded-xl border border-border bg-white p-6 shadow-card">
             <div className="flex items-center gap-3 mb-5">
-              <span className="text-[13px] text-neutral-500 font-medium tracking-wide">Forbes Vitals</span>
+              <span className="text-[13px] text-neutral-500 font-medium tracking-wide">Forbes Health</span>
               <div className="ml-auto w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center text-primary text-[12px] font-semibold">
                 KC
               </div>

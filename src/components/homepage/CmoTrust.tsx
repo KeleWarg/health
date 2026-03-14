@@ -44,7 +44,7 @@ export function CmoTrust() {
           </div>
 
           <p className="text-neutral-500 text-[12px] leading-relaxed mt-8 border-t border-border pt-6">
-            Forbes Vitals products require an online consultation with a licensed healthcare provider who will
+            Forbes Health products require an online consultation with a licensed healthcare provider who will
             determine if treatment is appropriate. Results may vary. Biomarker testing is not intended to diagnose,
             treat, cure, or prevent any disease.
           </p>
