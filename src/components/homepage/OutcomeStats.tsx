@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import Image from 'next/image'
 import { ScrollReveal } from '@/components/ScrollReveal'
 import { Parallax } from '@/components/Parallax'
 
@@ -72,12 +73,14 @@ export function OutcomeStats() {
         >
           {/* Hero image — foreground, right-aligned */}
           <Parallax speed={-0.04} className="absolute top-0 right-0 h-[90%] w-auto z-[1] hidden lg:block">
-            <img
+            <Image
               src="/AdobeStock_507785886 3.png"
               alt=""
-              loading="lazy"
+              width={800}
+              height={1000}
               className="h-full w-auto object-contain pointer-events-none animate-float"
               style={{ filter: 'drop-shadow(-20px 0 40px rgba(0,0,0,0.4))' }}
+              sizes="40vw"
             />
           </Parallax>
 
@@ -100,11 +103,13 @@ export function OutcomeStats() {
 
           {/* Mobile hero image — in-flow, above stats */}
           <div className="relative z-[3] -mt-16 -mx-6 mb-4 lg:hidden">
-            <img
+            <Image
               src="/AdobeStock_507785886 3.png"
               alt=""
-              loading="lazy"
+              width={800}
+              height={600}
               className="w-full h-auto object-cover max-h-[240px] object-[center_15%] animate-float"
+              sizes="100vw"
             />
             <div
               className="absolute inset-0 pointer-events-none"

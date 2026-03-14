@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { cn } from '@/lib/utils'
 import { Parallax } from '@/components/Parallax'
 
@@ -133,30 +134,36 @@ export function ProductSection({
         className={cn("relative aspect-[3/4] rounded-xl lg:rounded-2xl lg:mt-16 overflow-hidden lg:overflow-visible", heroImageClassName)}
         style={{ animation: 'float-gentle 4s ease-in-out infinite' }}
       >
-        <img
+        <Image
           src={heroImage}
           alt={heroImageAlt ?? ''}
-          loading="lazy"
+          width={1200}
+          height={900}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] lg:w-[190%] max-w-none object-contain drop-shadow-lg"
+          sizes="(max-width: 1024px) 130vw, 190vw"
         />
       </div>
     ) : heroFullWidth ? (
       <div className="relative" style={{ top: heroOffset || '16px' }}>
-        <img
+        <Image
           src={heroImage}
           alt={heroImageAlt ?? ''}
-          loading="lazy"
+          width={1200}
+          height={900}
           className="w-[150%] max-w-none object-contain"
           style={{ animation: 'float-gentle 4s ease-in-out infinite', marginLeft: 'calc(-25% + 100px)' }}
+          sizes="150vw"
         />
       </div>
     ) : (
-      <img
+      <Image
         src={heroImage}
         alt={heroImageAlt ?? ''}
-        loading="lazy"
+        width={800}
+        height={1067}
         className="w-full aspect-[3/4] object-cover rounded-xl lg:rounded-2xl lg:mt-16"
         style={{ animation: 'float-gentle 4s ease-in-out infinite', objectPosition: heroObjectPosition, marginTop: heroOffset }}
+        sizes="(max-width: 1024px) 100vw, 48vw"
       />
     )
   ) : null
@@ -165,12 +172,14 @@ export function ProductSection({
     <>
       {collageImages?.[0] ? (
         <div className="flex-1 min-w-0 lg:flex-none lg:w-full">
-          <img
+          <Image
             src={collageImages[0]}
             alt=""
-            loading="lazy"
+            width={800}
+            height={1067}
             className="w-full aspect-[3/4] object-cover rounded-xl lg:rounded-2xl -scale-x-100"
             style={{ animation: 'float-gentle 4s ease-in-out 1.5s infinite' }}
+            sizes="(max-width: 1024px) 50vw, 24vw"
           />
         </div>
       ) : (
@@ -188,12 +197,14 @@ export function ProductSection({
       )}
       {collageImages?.[1] && (
         <div className="flex-1 min-w-0 lg:flex-none lg:w-full">
-          <img
+          <Image
             src={collageImages[1]}
             alt=""
-            loading="lazy"
+            width={800}
+            height={800}
             className="w-full aspect-[3/4] lg:aspect-square object-cover rounded-xl lg:rounded-2xl"
             style={{ animation: 'float-gentle 4s ease-in-out 2s infinite' }}
+            sizes="(max-width: 1024px) 50vw, 24vw"
           />
         </div>
       )}
@@ -212,12 +223,14 @@ export function ProductSection({
     </div>
   ) : secondaryImage ? (
     <div className="flex-1 min-w-0 lg:flex-none lg:w-full">
-      <img
+      <Image
         src={secondaryImage}
         alt=""
-        loading="lazy"
+        width={800}
+        height={1067}
         className="w-full aspect-[3/4] object-cover rounded-xl lg:rounded-2xl"
         style={{ animation: 'float-gentle 4s ease-in-out 1.5s infinite' }}
+        sizes="(max-width: 1024px) 50vw, 24vw"
       />
     </div>
   ) : null
@@ -336,12 +349,14 @@ export function ProductSection({
                   {(checklistImage || checklistWidget) && (
                     <div className="mb-6 lg:mb-0 lg:absolute lg:right-0 lg:top-0 lg:bottom-0 lg:w-[35%] h-[240px] lg:h-auto flex items-center justify-center">
                       {checklistWidget ?? (
-                        <img
+                        <Image
                           src={checklistImage}
                           alt=""
-                          loading="lazy"
+                          width={400}
+                          height={400}
                           className="object-contain drop-shadow-xl"
                           style={{ maxWidth: '60%', maxHeight: '60%', animation: 'float-gentle 4s ease-in-out infinite' }}
+                          sizes="(max-width: 1024px) 60vw, 20vw"
                         />
                       )}
                     </div>
