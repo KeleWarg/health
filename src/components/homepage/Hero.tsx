@@ -24,23 +24,25 @@ const FEATURED_CARDS = [
     label: 'Weight Loss',
     hook: 'Clinician-guided plans that work.',
     href: '#',
-    bg: '#f5f0e8',
-    hoverBg: 'linear-gradient(135deg, #1e1c0f 0%, #3d3820 60%, #5c5228 100%)',
-    image: '/medications-collage.png',
+    bg: '#edf5f2',
+    hoverBg: 'linear-gradient(135deg, #1a2019 0%, #2e3528 60%, #434d38 100%)',
+    image: '/weight-loss-generated-new.png',
+    glowColor: 'rgba(218, 175, 85, 0.55)',
   },
   {
     label: 'Hair Loss',
     hook: 'Thicker hair starts here.',
     href: '#',
-    bg: '#f0e9df',
-    hoverBg: 'linear-gradient(135deg, #261214 0%, #4a2428 60%, #6b3538 100%)',
-    image: '/hair-loss-man.png',
+    bg: '#f2ece6',
+    hoverBg: 'linear-gradient(135deg, #2c1810 0%, #4a2c1a 60%, #6b3d22 100%)',
+    image: '/hair-loss-generated.png',
+    glowColor: 'rgba(218, 175, 85, 0.55)',
   },
 ]
 
 const COMPACT_CARDS = [
-  { label: 'ED', href: '#', bg: '#f5f0e8', hoverBg: 'linear-gradient(135deg, #2c1810 0%, #4a2c1a 60%, #6b3d22 100%)' },
-  { label: 'TRT', href: '#', bg: '#f5f0e8', hoverBg: 'linear-gradient(135deg, #1a2019 0%, #2e3528 60%, #434d38 100%)' },
+  { label: 'ED Medication', href: '#', bg: '#E8EBF0', hoverBg: 'linear-gradient(135deg, #2c1810 0%, #4a2c1a 60%, #6b3d22 100%)', image: '/ed-pill.png' },
+  { label: 'More Testosterone', href: '#', bg: '#F2EBE8', hoverBg: 'linear-gradient(135deg, #1a2019 0%, #2e3528 60%, #434d38 100%)', image: '/trt-generated-new.png' },
 ]
 
 const SENTENCES = [
@@ -159,7 +161,7 @@ export function Hero() {
 
       <div className="relative z-10 max-w-[800px] mx-auto px-4 sm:px-6 text-center pt-24 pb-[72px]">
         <p className="text-white/60 text-[13px] tracking-[0.12em] uppercase mb-5 animate-fade-in-up stagger-1">
-          Forbes Health Pharmacy
+          Every treatment you need
         </p>
 
         <h1 className="font-display text-white text-[clamp(3rem,6.5vw,4.5rem)] font-medium leading-[1.08] tracking-[-0.02em] mb-5 min-h-[2.16em] animate-fade-in-up stagger-2">
@@ -198,15 +200,21 @@ export function Hero() {
         <div className="max-w-[960px] mx-auto flex flex-col gap-3">
           {/* Featured cards */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-            {FEATURED_CARDS.map((card) => (
+            {FEATURED_CARDS.map((card, i) => {
+              const delay = `${i * 0.9}s`
+              return (
               <Link
                 key={card.label}
                 href={card.href}
-                className="group relative block rounded-2xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-[transform,box-shadow] duration-300 ease-out hover:shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:scale-[1.015]"
+                className="group relative block rounded-2xl overflow-visible shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition-[transform,box-shadow] duration-300 ease-out hover:shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:scale-[1.015]"
                 style={{ background: card.bg }}
               >
                 <div
-                  className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
+                  className="absolute inset-0 rounded-2xl overflow-hidden"
+                  style={{ background: card.bg }}
+                />
+                <div
+                  className="absolute inset-0 rounded-2xl overflow-hidden opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
                   style={{ background: card.hoverBg }}
                 />
                 <div className="relative flex flex-col h-[140px]">
@@ -227,24 +235,40 @@ export function Hero() {
                     </div>
                   </div>
                   {card.image && (
-                    <div className="absolute right-[-8px] top-[calc(50%+24px)] -translate-y-1/2 h-[150%] w-[55%] pointer-events-none">
-                      <Image
-                        src={card.image}
-                        alt={card.label}
-                        fill
-                        className="object-contain object-right transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-                        sizes="(max-width: 640px) 45vw, 200px"
+                    <>
+                      <div
+                        className="absolute right-[12%] bottom-[6px] w-[30%] h-[10px] rounded-full pointer-events-none z-[19] animate-card-shadow"
+                        style={{ animationDelay: delay }}
                       />
-                    </div>
+                      <div
+                        className="absolute right-[5%] top-1/2 -translate-y-1/2 w-[50%] aspect-square rounded-full pointer-events-none z-[18] opacity-0 transition-opacity duration-500 group-hover:opacity-100 blur-[30px]"
+                        style={{ background: `radial-gradient(circle, ${card.glowColor} 0%, transparent 70%)` }}
+                      />
+                      <div className="absolute right-[-8px] top-[calc(50%-12px)] -translate-y-1/2 h-[150%] w-[55%] pointer-events-none z-20">
+                        <div
+                          className="relative w-full h-full animate-card-float"
+                          style={{ animationDelay: delay }}
+                        >
+                          <Image
+                            src={card.image}
+                            alt={card.label}
+                            fill
+                            className="object-contain object-right transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                            sizes="(max-width: 640px) 45vw, 200px"
+                          />
+                        </div>
+                      </div>
+                    </>
                   )}
                 </div>
               </Link>
-            ))}
+              )
+            })}
           </div>
 
           {/* Compact cards */}
-          <div className="grid grid-cols-2 gap-3">
-            {COMPACT_CARDS.map((card) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {COMPACT_CARDS.map((card, i) => (
               <Link
                 key={card.label}
                 href={card.href}
@@ -255,13 +279,30 @@ export function Hero() {
                   className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
                   style={{ background: card.hoverBg }}
                 />
-                <div className="relative z-10 flex items-center justify-between h-[56px] px-5">
+                <div className="relative z-10 flex items-center justify-between h-[72px] px-5">
                   <p className="font-semibold text-[15px] text-neutral-800 transition-colors duration-300 group-hover:text-white">{card.label}</p>
-                  <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-black/[0.04] transition-colors duration-300 group-hover:bg-white/15">
-                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none" className="text-neutral-500 transition-colors duration-300 group-hover:text-white/80">
-                      <path d="M5.25 3.5L8.75 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg>
-                  </span>
+                  <div className="flex items-center gap-3">
+                    {/* @ts-ignore */}
+                    {card.image && (
+                      <div className="relative w-20 h-20">
+                        <div className="w-full h-full animate-card-float" style={{ animationDelay: `${i * 0.5}s` }}>
+                          <Image
+                            // @ts-ignore
+                            src={card.image}
+                            alt={card.label}
+                            fill
+                            className="object-contain"
+                            sizes="80px"
+                          />
+                        </div>
+                      </div>
+                    )}
+                    <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-black/[0.04] transition-colors duration-300 group-hover:bg-white/15">
+                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" className="text-neutral-500 transition-colors duration-300 group-hover:text-white/80">
+                        <path d="M5.25 3.5L8.75 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </span>
+                  </div>
                 </div>
               </Link>
             ))}
