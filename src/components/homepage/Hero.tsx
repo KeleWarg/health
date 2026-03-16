@@ -165,7 +165,7 @@ export function Hero() {
           Every treatment you need
         </p>
 
-        <h1 className="font-display text-white text-[clamp(3rem,6.5vw,4.5rem)] font-medium leading-[1.08] tracking-[-0.02em] mb-5 min-h-[2.16em] animate-fade-in-up stagger-2">
+        <h1 className="font-display text-white text-[clamp(2.5rem,6.5vw,4.5rem)] font-medium leading-[1.08] tracking-[-0.02em] mb-5 min-h-[2.16em] animate-fade-in-up stagger-2">
           {(() => {
             const { prefix } = SENTENCES[sentenceIndex]
             const prefixLen = prefix.length
@@ -273,43 +273,74 @@ export function Hero() {
               <Link
                 key={card.label}
                 href={card.href}
-                className="group relative block rounded-2xl overflow-hidden transition-[transform,box-shadow] duration-300 ease-out hover:shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:scale-[1.015]"
+                className="group relative block rounded-2xl overflow-visible sm:overflow-hidden transition-[transform,box-shadow] duration-300 ease-out hover:shadow-[0_4px_12px_rgba(0,0,0,0.1)] hover:scale-[1.015] shadow-[0_1px_3px_rgba(0,0,0,0.06)]"
                 style={{ background: card.bg }}
               >
                 <div
                   className="absolute inset-0 rounded-2xl opacity-0 transition-opacity duration-300 ease-out group-hover:opacity-100"
                   style={{ background: card.hoverBg }}
                 />
-                <div className="relative z-10 flex items-center justify-between h-[140px] sm:h-[72px] px-5">
-                  <div>
-                    <p className="font-semibold text-[15px] text-neutral-800 transition-colors duration-300 group-hover:text-white">{card.label}</p>
-                    <p className="text-[14px] leading-snug mt-1 text-[#6b6158] sm:hidden">{card.hook}</p>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    {/* @ts-ignore */}
-                    {card.image && (
-                      <div className="relative w-20 h-20">
+                <div className="relative z-10 h-[140px] sm:h-[72px]">
+                  {card.image && (
+                    <>
+                      <div
+                        className="absolute right-[12%] bottom-[6px] w-[30%] h-[10px] rounded-full pointer-events-none z-[19] animate-card-shadow sm:hidden"
+                        style={{ animationDelay: `${i * 0.9}s` }}
+                      />
+                      <div
+                        className="absolute right-[5%] top-1/2 -translate-y-1/2 w-[50%] aspect-square rounded-full pointer-events-none z-[18] opacity-0 transition-opacity duration-500 group-hover:opacity-100 blur-[30px] sm:hidden"
+                        style={{ background: `radial-gradient(circle, ${card.glowColor} 0%, transparent 70%)` }}
+                      />
+                      <div className="absolute right-[14%] top-[calc(50%-12px)] -translate-y-1/2 h-[60%] w-[22%] pointer-events-none z-20 sm:hidden">
                         <div
-                          className="absolute inset-0 rounded-full pointer-events-none opacity-0 transition-opacity duration-500 group-hover:opacity-100 blur-[20px] scale-125"
-                          style={{ background: `radial-gradient(circle, ${card.glowColor} 0%, transparent 70%)` }}
-                        />
-                        <div className="relative w-full h-full animate-card-float" style={{ animationDelay: `${i * 0.5}s` }}>
+                          className="relative w-full h-full animate-card-float"
+                          style={{ animationDelay: `${i * 0.9}s` }}
+                        >
                           <Image
                             // @ts-ignore
                             src={card.image}
                             alt={card.label}
                             fill
-                            className="object-contain"
-                            sizes="80px"
+                            className="object-contain object-right"
+                            sizes="45vw"
                           />
                         </div>
                       </div>
-                    )}
-                    <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-black/[0.04] transition-colors duration-300 group-hover:bg-white/15">
-                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" className="text-neutral-500 transition-colors duration-300 group-hover:text-white/80">
-                        <path d="M5.25 3.5L8.75 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </span>
+                    </>
+                  )}
+                  <div className="h-full px-5 pt-5 pb-5 sm:pt-0 sm:pb-0 flex flex-col sm:flex-row sm:items-center justify-between">
+                    <div className="flex-1 max-w-[60%] sm:max-w-none">
+                      <h3 className="font-semibold text-[20px] sm:text-[15px] leading-tight text-[#2a2520] transition-colors duration-300 group-hover:text-white">{card.label}</h3>
+                      <p className="text-[14px] leading-snug mt-1 text-[#6b6158] sm:hidden transition-colors duration-300 group-hover:text-white/70">{card.hook}</p>
+                    </div>
+                    <div className="flex items-center justify-between sm:justify-end sm:gap-3 mt-auto sm:mt-0">
+                      <span className="sm:hidden" />
+                      <div className="flex items-center gap-3">
+                        {card.image && (
+                          <div className="relative w-20 h-20 hidden sm:block">
+                            <div
+                              className="absolute inset-0 rounded-full pointer-events-none opacity-0 transition-opacity duration-500 group-hover:opacity-100 blur-[20px] scale-125"
+                              style={{ background: `radial-gradient(circle, ${card.glowColor} 0%, transparent 70%)` }}
+                            />
+                            <div className="relative w-full h-full animate-card-float" style={{ animationDelay: `${i * 0.5}s` }}>
+                              <Image
+                                // @ts-ignore
+                                src={card.image}
+                                alt={card.label}
+                                fill
+                                className="object-contain"
+                                sizes="80px"
+                              />
+                            </div>
+                          </div>
+                        )}
+                        <span className="inline-flex items-center justify-center w-8 h-8 sm:w-7 sm:h-7 rounded-full bg-black/[0.05] transition-colors duration-300 group-hover:bg-white/15">
+                          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" className="text-[#6b6158] transition-colors duration-300 group-hover:text-white/80">
+                            <path d="M5.25 3.5L8.75 7l-3.5 3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Link>
